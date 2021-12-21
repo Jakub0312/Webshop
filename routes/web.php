@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductStateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.layout');
 });
+
+Route::get('admin/productstates/{productstate}/delete', [ProductStateController::class, 'delete'])
+    ->name('productstates.delete');
+Route::resource('/admin/productstates', ProductStateController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

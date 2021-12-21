@@ -13,7 +13,7 @@ class UpdateProductStateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,9 @@ class UpdateProductStateRequest extends FormRequest
      */
     public function rules()
     {
+        $productstate=$this->route('productstate');
         return [
-            //
+            'name' => 'required|string|max:45|unique:product_states,name,'.$productstate->id
         ];
     }
 }

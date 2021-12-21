@@ -15,7 +15,10 @@ class CreatePricesTable extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 45);
+            $table->decimal('price', '7', '2');
+            $table->date('effdate');
+            $table->foreignId('product_id');
+            $table->foreignId('pricetype_id');
             $table->timestamps();
         });
     }

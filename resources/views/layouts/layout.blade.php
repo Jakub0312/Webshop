@@ -36,7 +36,7 @@
                  class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
 
                 <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900  rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
-                   href="index.html">Home</a>
+                   href="">Home</a>
 
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open"
@@ -115,15 +115,22 @@
                          x-transition:leave-end="transform opacity-0 scale-95"
                          class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
                         <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
-                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
-                               href="{{ route('login') }}">Login</a>
-                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
-                               href="{{ route('register') }}">Signup</a>
-                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
-                               href="">Profiel (Hidden until login)</a>
-                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
-                               href="#">Loguit (Hidden until login)</a>
+                            @if(Route::has('login'))
+                                @auth
+                                    <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
+                                       href="">Profiel</a>
+                                    <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
+                                       href="#">{{ route('logout') }}</a>
+                                @else
+                                    <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
+                                       href="{{ route('login') }}">Login</a>
+                                @if(Route::has('register'))
+                                    <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
+                                       href="{{ route('register') }}">Signup</a>
+                                @endif
+                                @endauth
                         </div>
+                        @endif
                     </div>
                 </div>
 

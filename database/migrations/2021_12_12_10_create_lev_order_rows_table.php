@@ -16,13 +16,10 @@ class CreateLevOrderRowsTable extends Migration
         Schema::create('lev_order_rows', function (Blueprint $table) {
             $table->id();
             $table->integer('amount');
-            $table->foreignId('product_id')->constrained()
-                ->onUpdate('restrict')->onDelete('restrict');
-            $table->foreignId('levorder_id')->constrained()
-                ->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('product_id');
+            $table->foreignId('levorder_id');
             $table->date('expected');
-            $table->foreignId('levorderstate_id')->constrained()
-                ->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('levorderstate_id');
             $table->timestamps();
         });
     }

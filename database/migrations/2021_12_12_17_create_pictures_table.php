@@ -17,8 +17,7 @@ class CreatePicturesTable extends Migration
             $table->id();
             $table->string('name', 45);
             $table->string('url', 255);
-            $table->foreignId('product_id')->constrained()
-                ->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignId('product_id');
             $table->timestamps();
         });
     }

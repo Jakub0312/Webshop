@@ -15,12 +15,7 @@ class CreatePriceTypesTable extends Migration
     {
         Schema::create('price_types', function (Blueprint $table) {
             $table->id();
-            $table->decimal('price', '7', '2');
-            $table->date('effdate');
-            $table->foreignId('product_id')->constrained()
-                ->onUpdate('restrict')->onDelete('restrict');
-            $table->foreignId('pricetype_id')->constrained()
-                ->onUpdate('restrict')->onDelete('restrict');
+            $table->string('name', 45);
             $table->timestamps();
         });
     }

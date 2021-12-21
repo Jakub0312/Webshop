@@ -10,9 +10,10 @@ class ProductState extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+    //protected $table = "product_states";
 
-    public function product()
-    {
-        return $this->hasMany(Product::class);
-    }
+//    public function product()
+//    {
+//        return $this->hasMany(Product::class);
+//    }
 }

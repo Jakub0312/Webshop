@@ -16,10 +16,10 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function productstate()
-    {
-        return $this->belongsTo(ProductState::class);
-    }
+//    public function productstate()
+//    {
+//        return $this->belongsTo(ProductState::class);
+//    }
 
     public function picture()
     {
