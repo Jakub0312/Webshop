@@ -10,9 +10,10 @@ class PriceType extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+    protected $table = 'price_types';
 
-    public function price()
-    {
-        return $this->hasMany(Price::class);
-    }
+//    public function price()
+//    {
+//        return $this->hasMany(Price::class);
+//    }
 }

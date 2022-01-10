@@ -44,7 +44,7 @@ class ProductStateController extends Controller
         $productstates->name = $request->name;
         $productstates->save();
 
-        return redirect()->route('productstates.index')->with('message', 'Productstate succesvol aangemaakt');
+        return redirect()->route('productstates.index')->with('message', 'Productstate succesvol aangemaakt!');
     }
 
     /**

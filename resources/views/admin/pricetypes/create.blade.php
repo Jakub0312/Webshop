@@ -14,16 +14,16 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.index') }}">Overzicht</a>
+                <a href="{{ route('pricetypes.index') }}">Overzicht</a>
             </button>
-            <button
-                class="ml-6 py-2 block border-b-2 border-transparent
-                        focus:outline-none font-medium capitalize text-center
-                        focus:text-green-500 focus:border-customgreen
-                        dark-focus:text-customgreen-light dark-focus:border-customgreen-light
+            <a
+                href=""
+                class="ml-6 py-2 block text-customgreen-dark border-customgreen-dark
+                        dark:text-customgreen-light dark:border-customgreen-light
+                        focus:outline-none border-b-2 font-medium capitalize
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.create') }}">Toevoegen</a>
-            </button>
+                Toevoegen
+            </a>
         </div>
     </nav>
 @endsection
@@ -32,7 +32,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-80 mr-auto">
-        Edit productstate
+        Toevoegen pricetype
     </h2>
 
     <div class="w-full max-w-xs mx-auto mt-44">
@@ -49,9 +49,7 @@
             </div>
         @endif
 
-        <form class="bg-white shadow-md rounded border .border-customgreen px-8 pt-6 pb-8 mb-4"
-              action="{{ route('productstates.update', ['productstate' => $productstate->id]) }}" method="POST">
-            @method('PUT')
+        <form class="bg-white shadow-md rounded border .border-customgreen px-8 pt-6 pb-8 mb-4" action="{{ route('pricetypes.store') }}" method="POST">
             @csrf
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
@@ -59,12 +57,12 @@
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                        @error('name') border-red-500 @enderror"
-                       id="name" type="text" placeholder="Naam" name="name" value="{{ old('name', $productstate->name) }}">
+                       id="name" type="text" placeholder="Naam" name="name" value="{{ old('name') }}">
             </div>
 
             <div class="flex items-center justify-between">
                 <button class="bg-customgreen hover:bg-customgreen-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >
-                    Edit
+                    Toevoegen
                 </button>
             </div>
         </form>

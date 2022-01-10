@@ -13,7 +13,7 @@ class UpdatePriceTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,9 @@ class UpdatePriceTypeRequest extends FormRequest
      */
     public function rules()
     {
+        $pricetype=$this->route('pricetype');
         return [
-            //
+            'name' => 'required|string|max:45|unique:price_type,name,'.$pricetype->id
         ];
     }
 }

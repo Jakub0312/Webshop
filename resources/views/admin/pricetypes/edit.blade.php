@@ -14,7 +14,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.index') }}">Overzicht</a>
+                <a href="{{ route('pricetypes.index') }}">Overzicht</a>
             </button>
             <button
                 class="ml-6 py-2 block border-b-2 border-transparent
@@ -22,7 +22,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.create') }}">Toevoegen</a>
+                <a href="{{ route('pricetypes.create') }}">Toevoegen</a>
             </button>
         </div>
     </nav>
@@ -32,7 +32,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-80 mr-auto">
-        Edit productstate
+        Edit pricetype
     </h2>
 
     <div class="w-full max-w-xs mx-auto mt-44">
@@ -50,7 +50,7 @@
         @endif
 
         <form class="bg-white shadow-md rounded border .border-customgreen px-8 pt-6 pb-8 mb-4"
-              action="{{ route('productstates.update', ['productstate' => $productstate->id]) }}" method="POST">
+              action="{{ route('pricetypes.update', ['pricetype' => $pricetype->id]) }}" method="POST">
             @method('PUT')
             @csrf
             <div class="mb-4">
@@ -59,7 +59,7 @@
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                        @error('name') border-red-500 @enderror"
-                       id="name" type="text" placeholder="Naam" name="name" value="{{ old('name', $productstate->name) }}">
+                       id="name" type="text" placeholder="Naam" name="name" value="{{ old('name', $pricetype->name) }}">
             </div>
 
             <div class="flex items-center justify-between">
