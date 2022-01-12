@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\admin\PriceTypeController;
-use App\Http\Controllers\Admin\ProductStateController;
+use App\Http\Controllers\admin\PricetypeController;
+use App\Http\Controllers\Admin\ProductstateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,14 +20,14 @@ Route::get('/', function () {
 });
 
 //Productstate routes
-Route::get('admin/productstates/{productstate}/delete', [ProductStateController::class, 'delete'])
+Route::get('admin/productstates/{productstate}/delete', [ProductstateController::class, 'delete'])
     ->name('productstates.delete');
-Route::resource('/admin/productstates', ProductStateController::class);
+Route::resource('/admin/productstates', ProductstateController::class);
 
 //Pricetype routes
-Route::get('admin/pricetypes/{pricetype}/delete', [PriceTypeController::class, 'delete'])
+Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, 'delete'])
     ->name('pricetypes.delete');
-Route::resource('/admin/pricetypes', PriceTypeController::Class);
+Route::resource('/admin/pricetypes', PricetypeController::Class);
 
 
 Route::get('/dashboard', function () {

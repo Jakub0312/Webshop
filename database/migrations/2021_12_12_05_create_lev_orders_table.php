@@ -13,7 +13,7 @@ class CreateLevOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('lev_orders', function (Blueprint $table) {
+        Schema::create('levorders', function (Blueprint $table) {
             $table->id();
             $table->date('date');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateLevOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lev_orders');
+        Schema::dropIfExists('levorders');
     }
 }

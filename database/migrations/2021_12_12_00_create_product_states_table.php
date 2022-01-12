@@ -13,7 +13,7 @@ class CreateProductStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_states', function (Blueprint $table) {
+        Schema::create('productstates', function (Blueprint $table) {
             $table->id();
             $table->string('name', 45);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateProductStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_states');
+        Schema::dropIfExists('productstates');
     }
 }

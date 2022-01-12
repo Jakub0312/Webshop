@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\LevOrderRow;
+use App\Models\Levorderrow;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class LevOrderRowPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrderRow  $levOrderRow
+     * @param  \App\Models\Levorderrow  $levOrderRow
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, LevOrderRow $levOrderRow)
+    public function view(User $user, Levorderrow $levOrderRow)
     {
         //
     }
@@ -48,10 +48,10 @@ class LevOrderRowPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrderRow  $levOrderRow
+     * @param  \App\Models\Levorderrow  $levOrderRow
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, LevOrderRow $levOrderRow)
+    public function update(User $user, Levorderrow $levOrderRow)
     {
         //
     }
@@ -60,10 +60,10 @@ class LevOrderRowPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrderRow  $levOrderRow
+     * @param  \App\Models\Levorderrow  $levOrderRow
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, LevOrderRow $levOrderRow)
+    public function delete(User $user, Levorderrow $levOrderRow)
     {
         //
     }
@@ -72,10 +72,10 @@ class LevOrderRowPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrderRow  $levOrderRow
+     * @param  \App\Models\Levorderrow  $levOrderRow
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, LevOrderRow $levOrderRow)
+    public function restore(User $user, Levorderrow $levOrderRow)
     {
         //
     }
@@ -84,10 +84,10 @@ class LevOrderRowPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrderRow  $levOrderRow
+     * @param  \App\Models\Levorderrow  $levOrderRow
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, LevOrderRow $levOrderRow)
+    public function forceDelete(User $user, Levorderrow $levOrderRow)
     {
         //
     }

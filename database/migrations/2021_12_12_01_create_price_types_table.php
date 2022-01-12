@@ -13,7 +13,7 @@ class CreatePriceTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('price_types', function (Blueprint $table) {
+        Schema::create('pricetypes', function (Blueprint $table) {
             $table->id();
             $table->string('name', 45);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreatePriceTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('price_types');
+        Schema::dropIfExists('pricetypes');
     }
 }

@@ -13,7 +13,7 @@ class CreateLevOrderRowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lev_order_rows', function (Blueprint $table) {
+        Schema::create('levorderrows', function (Blueprint $table) {
             $table->id();
             $table->integer('amount');
             $table->foreignId('product_id');
@@ -31,6 +31,6 @@ class CreateLevOrderRowsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lev_order_rows');
+        Schema::dropIfExists('levorderrows');
     }
 }
