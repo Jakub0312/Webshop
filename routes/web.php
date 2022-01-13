@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('layouts.layout');
 });
 
+Route::get('/admin', function (){
+    return view('admin.index');
+});
+
 //Productstate routes
 Route::get('admin/productstates/{productstate}/delete', [ProductstateController::class, 'delete'])
     ->name('productstates.delete');
