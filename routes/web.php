@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\PricetypeController;
 use App\Http\Controllers\Admin\ProductstateController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,10 @@ Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, '
     ->name('pricetypes.delete');
 Route::resource('/admin/pricetypes', PricetypeController::Class);
 
+//User routes
+Route::get('admin/users/{user}/delete', [UserController::class, 'delete'])
+    ->name('users.delete');
+Route::resource('/admin/users', UserController::Class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
