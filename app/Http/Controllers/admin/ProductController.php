@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -15,7 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // producten ophalen
+        $products = Product::with('category','productstate')->get();
+        // producten naar de view
+        return view('admin.products.index', compact('products'));
     }
 
     /**

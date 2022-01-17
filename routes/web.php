@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\PricetypeController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\ProductstateController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,11 @@ Route::resource('/admin/productstates', ProductstateController::class);
 Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, 'delete'])
     ->name('pricetypes.delete');
 Route::resource('/admin/pricetypes', PricetypeController::Class);
+
+// Product routes
+Route::get('admin/products/{product}/delete', [ProductController::class, 'delete'])
+    ->name('products.delete');
+Route::resource('/admin/products', ProductController::Class);
 
 //User routes
 Route::group(['middleware' => ['role:admin']], function () {
