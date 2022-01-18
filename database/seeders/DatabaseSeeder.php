@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ProductstateSeeder::class,
             PricetypeSeeder::class,
+            StateSeeder::class,
+            OrderSeeder::class,
         ]);
     }
 }

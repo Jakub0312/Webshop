@@ -3,6 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Order;
+use App\Models\State;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderFactory extends Factory
@@ -22,7 +25,9 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'effdate' => $this->faker->dateTime,
+            'orderdate' => Carbon::now(),
+            'user_id' => User::all()->random()->id,
+            'state_id' => State::all()->random()->id,
         ];
     }
 }
