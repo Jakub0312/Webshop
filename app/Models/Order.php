@@ -20,4 +20,9 @@ class Order extends Model
     {
         return $this->belongsTo(State::class);
     }
+
+    public function orderrow()
+    {
+        return $this->hasMany(Orderrow::class);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
+use App\Models\Orderrow;
 use App\Models\State;
 use App\Models\User;
 use Carbon\Carbon;
@@ -59,7 +60,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $orderrows = Orderrow::all();
+        return view ('admin.orders.show', compact('order', 'orderrows'));
     }
 
     /**

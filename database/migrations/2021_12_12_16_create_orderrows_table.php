@@ -17,7 +17,7 @@ class CreateOrderrowsTable extends Migration
             $table->id();
             $table->foreignId('order_id');
             $table->foreignId('product_id');
-            $table->decimal('amount');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

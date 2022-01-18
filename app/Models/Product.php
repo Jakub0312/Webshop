@@ -21,19 +21,9 @@ class Product extends Model
 //        return $this->belongsTo(Productstate::class);
 //    }
 
-    public function picture()
-    {
-        return $this->hasMany(Picture::class);
-    }
-
     public function price()
     {
         return $this->hasMany(Price::class);
-    }
-
-    public function levorderrow()
-    {
-        return $this->hasMany(Levorderrow::class);
     }
 
     public function orderrow()
@@ -41,8 +31,4 @@ class Product extends Model
         return $this->hasMany(OrderRow::class);
     }
 
-    public function review()
-    {
-        return $this->hasMany(Review::class);
-    }
 }
