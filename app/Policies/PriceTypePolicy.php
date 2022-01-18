@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\PriceType;
+use App\Models\Pricetype;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class PriceTypePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\PriceType  $priceType
+     * @param  \App\Models\Pricetype  $priceType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, PriceType $priceType)
+    public function view(User $user, Pricetype $priceType)
     {
         //
     }
@@ -48,10 +48,10 @@ class PriceTypePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\PriceType  $priceType
+     * @param  \App\Models\Pricetype  $priceType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, PriceType $priceType)
+    public function update(User $user, Pricetype $priceType)
     {
         //
     }
@@ -60,10 +60,10 @@ class PriceTypePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\PriceType  $priceType
+     * @param  \App\Models\Pricetype  $priceType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, PriceType $priceType)
+    public function delete(User $user, Pricetype $priceType)
     {
         //
     }
@@ -72,10 +72,10 @@ class PriceTypePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\PriceType  $priceType
+     * @param  \App\Models\Pricetype  $priceType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, PriceType $priceType)
+    public function restore(User $user, Pricetype $priceType)
     {
         //
     }
@@ -84,10 +84,10 @@ class PriceTypePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\PriceType  $priceType
+     * @param  \App\Models\Pricetype  $priceType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, PriceType $priceType)
+    public function forceDelete(User $user, Pricetype $priceType)
     {
         //
     }

@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\LevOrder;
+use App\Models\Levorder;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class LevOrderPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrder  $levOrder
+     * @param  \App\Models\Levorder  $levOrder
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, LevOrder $levOrder)
+    public function view(User $user, Levorder $levOrder)
     {
         //
     }
@@ -48,10 +48,10 @@ class LevOrderPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrder  $levOrder
+     * @param  \App\Models\Levorder  $levOrder
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, LevOrder $levOrder)
+    public function update(User $user, Levorder $levOrder)
     {
         //
     }
@@ -60,10 +60,10 @@ class LevOrderPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrder  $levOrder
+     * @param  \App\Models\Levorder  $levOrder
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, LevOrder $levOrder)
+    public function delete(User $user, Levorder $levOrder)
     {
         //
     }
@@ -72,10 +72,10 @@ class LevOrderPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrder  $levOrder
+     * @param  \App\Models\Levorder  $levOrder
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, LevOrder $levOrder)
+    public function restore(User $user, Levorder $levOrder)
     {
         //
     }
@@ -84,10 +84,10 @@ class LevOrderPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LevOrder  $levOrder
+     * @param  \App\Models\Levorder  $levOrder
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, LevOrder $levOrder)
+    public function forceDelete(User $user, Levorder $levOrder)
     {
         //
     }

@@ -16,10 +16,10 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function productstate()
-    {
-        return $this->belongsTo(ProductState::class);
-    }
+//    public function productstate()
+//    {
+//        return $this->belongsTo(Productstate::class);
+//    }
 
     public function picture()
     {
@@ -33,7 +33,7 @@ class Product extends Model
 
     public function levorderrow()
     {
-        return $this->hasMany(LevOrderRow::class);
+        return $this->hasMany(Levorderrow::class);
     }
 
     public function orderrow()

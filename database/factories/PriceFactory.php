@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\PriceType;
+use App\Models\Pricetype;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +19,7 @@ class PriceFactory extends Factory
             'price' => $this->faker->randomFloat(2, 2, 7),
             'effdate' => $this->faker->date,
             'product_id' => Product::all()->random()->id,
-            'pricetype_id' => PriceType::all()->random()->id,
+            'pricetype_id' => Pricetype::all()->random()->id,
         ];
     }
 }
