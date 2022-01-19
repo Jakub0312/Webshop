@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\OrderrowController;
 use App\Http\Controllers\admin\PricetypeController;
 use App\Http\Controllers\Admin\ProductstateController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,10 @@ Route::get('/', function () {
     return view('layouts.layout');
 });
 
-Route::get('/admin', function (){
-    return view('admin.index');
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/admin', function () {
+        return view('admin.index');
+    });
 });
 
 //Productstate routes
@@ -35,6 +38,12 @@ Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, '
     ->name('pricetypes.delete');
 Route::resource('/admin/pricetypes', PricetypeController::Class);
 
+//User routes
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('admin/users/{user}/delete', [UserController::class, 'delete'])
+        ->name('users.delete');
+    Route::resource('/admin/users', UserController::Class);
+});
 //Orders routes
 Route::get('admin/orders/{order}/delete', [OrderController::class, 'delete'])
     ->name('orders.delete');
