@@ -83,23 +83,23 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $products
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductRequest $request, Product $products)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        $products->name = $request->name;
-        $products->description = $request->description;
-        $products->specifications = $request->specifications;
-        $products->category_id = $request->category_id;
-        $products->save();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->specifications = $request->specifications;
+        $product->category_id = $request->category_id;
+        $product->save();
 
-        if ($products->latest_price->price != $request->price)
+        if ($product->latest_price->price != $request->price)
         {
             $price = new Price();
             $price->price = $request->price;
             $price->effdate = Carbon::now();
-            $price->product_id = $products->id;
+            $price->product_id = $product->id;
             $price->save();
         }
 

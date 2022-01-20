@@ -25,7 +25,7 @@ class UpdateProductRequest extends FormRequest
     {
         $product = $this->route('product');
         return [
-            'name' => 'required|max:45|unique:products,name,'.$product
+            'name' => 'required|max:45|unique:products,name,'.$product->id
         ];
     }
 }

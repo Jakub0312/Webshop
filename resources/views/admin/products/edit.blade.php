@@ -61,6 +61,69 @@
                        @error('name') border-red-500 @enderror"
                        id="name" type="text" placeholder="Naam" name="name" value="{{ old('name', $product->name) }}">
             </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Description
+                </label>
+                <textarea
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                    focus:outline-none focus:shadow-outline @error('description') border-red-500 @enderror" name="description"
+                    id="description" required>{{ old('description', $product->description) }}</textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Specifications
+                </label>
+                <textarea
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                    focus:outline-none focus:shadow-outline @error('specifications') border-red-500 @enderror" name="specifications"
+                    id="specifications" required>{{ old('specifications', $product->specifications) }}</textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    ProductState
+                </label>
+                <textarea
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                    focus:outline-none focus:shadow-outline @error('productstate_id') border-red-500 @enderror" name="productstate_id"
+                    id="productstate_id" required>{{ old('productstate_id') }}</textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+                    Stock
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                    focus:outline-none focus:shadow-outline @error('stock') border-red-500 @enderror" name="stock"
+                    id="stock" value="{{ old('stock', $product->stock) }}" type="text" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+                    Price
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                    focus:outline-none focus:shadow-outline @error('price') border-red-500 @enderror" name="price"
+                    id="price" value="{{ old('price', $product->latest_price->price) }}" type="text" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="category_id">
+                    Category
+                </label>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                    focus:outline-none focus:shadow-outline" name="category_id" id="category_id">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
+
 
             <div class="flex items-center justify-between">
                 <button class="bg-customgreen hover:bg-customgreen-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >
