@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\PricetypeController;
-use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductstateController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
