@@ -15,7 +15,8 @@ class CreateOrderrowsTable extends Migration
     {
         Schema::create('orderrows', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id');
+            $table->foreignId('order_id')->constrained()
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('product_id');
             $table->integer('amount');
             $table->timestamps();
