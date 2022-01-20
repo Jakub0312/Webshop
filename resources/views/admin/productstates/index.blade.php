@@ -13,7 +13,7 @@
                         dark:text-customgreen-light dark:border-customgreen-light
                         focus:outline-none border-b-2 font-medium capitalize
                         transition duration-500 ease-in-out">
-                Overzicht
+                Overview
             </a>
             <button
                 class="ml-6 py-2 block border-b-2 border-transparent
@@ -21,7 +21,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.create') }}">Toevoegen</a>
+                <a href="{{ route('productstates.create') }}">Create</a>
             </button>
         </div>
     </nav>
@@ -31,7 +31,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-20 mr-auto">
-        Overzicht productstates
+        Overview productstates
     </h2>
 
     @if(session('message'))

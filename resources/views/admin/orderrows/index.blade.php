@@ -13,7 +13,7 @@
                         dark:text-customgreen-light dark:border-customgreen-light
                         focus:outline-none border-b-2 font-medium capitalize
                         transition duration-500 ease-in-out">
-                Overzicht
+                Overview
             </a>
             <button
                 class="ml-6 py-2 block border-b-2 border-transparent
@@ -21,7 +21,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('pricetypes.create') }}">Toevoegen</a>
+                <a href="{{ route('orderrows.create') }}">Create</a>
             </button>
         </div>
     </nav>
@@ -31,7 +31,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-20 mr-auto">
-        Overview pricetypes
+        Overview orderrows
     </h2>
 
     @if(session('message'))
@@ -54,10 +54,20 @@
 
                 <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
                     <div class="flex items-center justify-center">
-                        Name
+                        Product
                     </div>
                 </th>
 
+                <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
+                    <div class="flex items-center justify-center">
+                        Order ID
+                    </div>
+                </th>
+                <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
+                    <div class="flex items-center justify-center">
+                        Amount
+                    </div>
+                </th>
                 <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
                     <div class="flex items-center justify-center">
                         Details
@@ -78,20 +88,30 @@
             </thead>
             <tbody>
 
-            @foreach($pricetypes as $pricetype)
+            @foreach($orderrows as $orderrow)
                 <tr class="bg-gray-100 text-center border-b text-sm text-gray-700">
-                    <td class="p-2 border-r">{{ $pricetype->id }}</td>
-                    <td class="p-2 border-r">{{ $pricetype->name }}</td>
                     <td class="p-2 border-r">
-                        <a href="{{ route('pricetypes.show', ['pricetype' => $pricetype->id])  }}"
+                        {{ $orderrow->id }}
+                    </td>
+                    <td class="p-2 border-r">
+                        {{ $orderrow->product->name }}
+                    </td>
+                    <td class="p-2 border-r">
+                        {{ $orderrow->order->id }}
+                    </td>
+                    <td class="p-2 border-r">
+                        {{ $orderrow->amount }}
+                    </td>
+                    <td class="p-2 border-r">
+                        <a href="{{ route('orderrows.show', ['orderrow' => $orderrow->id])  }}"
                            class="px-4 py-1 text-sm text-customgreen-dark bg-customgreen-light rounded-full">Details</a>
                     </td>
                     <td class="p-2 border-r">
-                        <a href="{{ route('pricetypes.edit', ['pricetype' => $pricetype->id])  }}"
+                        <a href="{{ route('orderrows.edit', ['orderrow' => $orderrow->id])  }}"
                            class="px-4 py-1 text-sm text-blue-600 bg-blue-200 rounded-full">Edit</a>
                     </td>
                     <td class="p-2 border-r">
-                        <a href="{{ route('pricetypes.delete', ['pricetype' => $pricetype->id])  }}"
+                        <a href="{{ route('orderrows.delete', ['orderrow' => $orderrow->id])  }}"
                            class="px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full">Delete</a>
                     </td>
                 </tr>

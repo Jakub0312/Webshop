@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\OrderrowController;
 use App\Http\Controllers\admin\PricetypeController;
 use App\Http\Controllers\Admin\ProductstateController;
 use App\Http\Controllers\Admin\UserController;
@@ -42,6 +44,16 @@ Route::group(['middleware' => ['role:admin']], function () {
         ->name('users.delete');
     Route::resource('/admin/users', UserController::Class);
 });
+//Orders routes
+Route::get('admin/orders/{order}/delete', [OrderController::class, 'delete'])
+    ->name('orders.delete');
+Route::resource('/admin/orders', OrderController::Class);
+
+//Orderrows routes
+Route::get('admin/orderrows/{orderrow}/delete', [OrderrowController::class, 'delete'])
+    ->name('orderrows.delete');
+Route::resource('/admin/orderrows', OrderrowController::Class);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
