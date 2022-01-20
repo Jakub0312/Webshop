@@ -14,7 +14,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.index') }}">Overview</a>
+                <a href="{{ route('orders.index') }}">Overview</a>
             </button>
             <button
                 class="ml-6 py-2 block border-b-2 border-transparent
@@ -22,7 +22,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.create') }}">Create</a>
+                <a href="{{ route('orders.create') }}">Create</a>
             </button>
         </div>
     </nav>
@@ -32,7 +32,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-80 mr-auto">
-        Edit productstate
+        Edit order
     </h2>
 
     <div class="w-full max-w-xs mx-auto mt-44">
@@ -50,16 +50,54 @@
         @endif
 
         <form class="bg-white shadow-md rounded border .border-customgreen px-8 pt-6 pb-8 mb-4"
-              action="{{ route('productstates.update', ['productstate' => $productstate->id]) }}" method="POST">
+              action="{{ route('orders.update', ['order' => $order->id]) }}" method="POST">
             @method('PUT')
             @csrf
+
+            {{--Choose date--}}
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                    Name
+                    Date
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
-                       @error('name') border-red-500 @enderror"
-                       id="name" type="text" placeholder="Naam" name="name" value="{{ old('name', $productstate->name) }}">
+                       @error('orderdate') border-red-500 @enderror"
+                       id="orderdate" type="datetime-local" placeholder="Order date" name="orderdate" value="{{ old('orderdate', $order->orderdate) }}">
+            </div>
+
+            {{--Choose user--}}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    User
+                </label>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="user_id" id="user_id">
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}"
+                                @if( old('user_id', $order->user_id) == $user->id)
+                                selected
+                            @endif
+                        >{{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            {{--Choose order state--}}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Order state
+                </label>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="state_id" id="state_id">
+                    @foreach($states as $state)
+                        <option value="{{ $state->id }}"
+                                @if( old('state_id', $order->state_id) == $state->id)
+                                selected
+                            @endif
+                        >{{ $state->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="flex items-center justify-between">
