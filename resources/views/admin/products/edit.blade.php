@@ -50,7 +50,7 @@
         @endif
 
         <form class="bg-white shadow-md rounded border .border-customgreen px-8 pt-6 pb-8 mb-4"
-              action="{{ route('products.update', ['product' => $product->id]) }}" method="POST">
+              action="{{ route('products.update', ['product'=> $product->id]) }}" method="POST">
             @method('PUT')
             @csrf
             <div class="mb-4">
@@ -79,15 +79,21 @@
                     focus:outline-none focus:shadow-outline @error('specifications') border-red-500 @enderror" name="specifications"
                     id="specifications" required>{{ old('specifications', $product->specifications) }}</textarea>
             </div>
+
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="category_id">
                     ProductState
                 </label>
-                <textarea
+                <select
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
-                    focus:outline-none focus:shadow-outline @error('productstate_id') border-red-500 @enderror" name="productstate_id"
-                    id="productstate_id" required>{{ old('productstate_id') }}</textarea>
+                    focus:outline-none focus:shadow-outline" name="category_id" id="category_id">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
+
+
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="price">

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
+use App\Models\Productstate;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        $productstates = Productstate::all();
+        return view('admin.products.create', compact('categories', 'productstates'));
     }
 
     /**
@@ -76,7 +78,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        return view('admin.products.edit', compact('product', 'categories'));
+        $productstates = Productstate::all();
+        return view('admin.products.edit', compact('categories', 'product'));
     }
 
     /**

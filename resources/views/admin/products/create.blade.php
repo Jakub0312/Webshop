@@ -80,13 +80,16 @@
                    id="specifications" required>{{ old('specifications') }}</textarea>
            </div>
            <div class="mb-4">
-               <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+               <label class="block text-gray-700 text-sm font-bold mb-2" for="productstate_id">
                    ProductState
                </label>
-               <textarea
+               <select
                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
-                    focus:outline-none focus:shadow-outline @error('productstate_id') border-red-500 @enderror" name="productstate_id"
-                   id="productstate_id" required>{{ old('productstate_id') }}</textarea>
+                    focus:outline-none focus:shadow-outline" name="productstate_id" id="productstate_id">
+                   @foreach($productstates as $productstate)
+                       <option value="{{ $productstate->id }}">{{ $productstate->name }}</option>
+                   @endforeach
+               </select>
            </div>
 
            <div class="mb-4">
