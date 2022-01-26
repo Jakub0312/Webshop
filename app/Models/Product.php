@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'specifications', 'stock'];
+    protected $fillable = ['name', 'description', 'specifications', 'stock', 'price'];
 
     public function category()
     {
@@ -24,6 +24,11 @@ class Product extends Model
     public function price()
     {
         return $this->hasMany(Price::class);
+    }
+
+    public function latest_price()
+    {
+        return $this->hasOne(Price::class)->orderBy('effdate', 'desc');
     }
 
     public function orderrow()
