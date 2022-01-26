@@ -88,10 +88,10 @@ Route::get('/checkout', [
     ->name('carts.checkout');
 
 //place order
-//Route::post('/save-order', [
-//    ProductController::class, 'saveOrder'])
-//    ->name('carts.saveorder');
-Route::post('/saveorder', 'ProductController@saveOrder');
+Route::post('/save-order', [
+    ProductController::class, 'saveOrder'])
+   ->name('carts.saveorder');
+//Route::post('/saveorder', 'ProductController@saveOrder');
 //Route::get('/save-order')
 
 
