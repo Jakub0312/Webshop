@@ -9,7 +9,11 @@ class Product extends Model
 {
     use HasFactory;
 
+<<<<<<< HEAD
     protected $fillable = ['name', 'description', 'specifications', 'stock',];
+=======
+    protected $fillable = ['name', 'description', 'specifications', 'stock', 'price'];
+>>>>>>> develop
 
     public function category()
     {
@@ -21,24 +25,22 @@ class Product extends Model
         return $this->belongsTo(Productstate::class);
     }
 
-    public function picture()
-    {
-        return $this->hasMany(Picture::class);
-    }
-
     public function price()
     {
         return $this->hasMany(Price::class);
     }
 
     public function latest_price()
+<<<<<<< HEAD
     {
         return $this->hasOne(Price::class)->orderBy('effdate', 'desc');
     }
 
     public function levorderrow()
+=======
+>>>>>>> develop
     {
-        return $this->hasMany(Levorderrow::class);
+        return $this->hasOne(Price::class)->orderBy('effdate', 'desc');
     }
 
     public function orderrow()
@@ -46,8 +48,4 @@ class Product extends Model
         return $this->hasMany(OrderRow::class);
     }
 
-    public function review()
-    {
-        return $this->hasMany(Review::class);
-    }
 }
