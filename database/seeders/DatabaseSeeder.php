@@ -18,11 +18,20 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             ProductstateSeeder::class,
+            CategorySeeder::class,
             PricetypeSeeder::class,
+<<<<<<< HEAD
+            ProductSeeder::class,
+            PriceSeeder::class
+=======
             StateSeeder::class,
             OrderSeeder::class,
             ProductSeeder::class,
+            PriceSeeder::class,
             OrderrowSeeder::class,
+            AddresstypeSeeder::class,
+            AddressSeeder::class,
+>>>>>>> develop
         ]);
     }
 }

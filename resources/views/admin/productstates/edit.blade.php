@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+z@extends('layouts.layout')
 
 @section('topmenu')
     <nav
