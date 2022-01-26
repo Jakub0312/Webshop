@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\OrderrowController;
 use App\Http\Controllers\admin\PricetypeController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductstateController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\public\CartController;
@@ -44,6 +45,11 @@ Route::resource('/admin/productstates', ProductstateController::class);
 Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, 'delete'])
     ->name('pricetypes.delete');
 Route::resource('/admin/pricetypes', PricetypeController::Class);
+
+// Product routes
+Route::get('admin/products/{product}/delete', [ProductController::class, 'delete'])
+    ->name('products.delete');
+Route::resource('/admin/products', ProductController::Class);
 
 //User routes
 Route::get('admin/users/{user}/delete', [UserController::class, 'delete'])
@@ -88,10 +94,10 @@ Route::get('/checkout', [
     ->name('carts.checkout');
 
 //place order
-//Route::post('/save-order', [
-//    ProductController::class, 'saveOrder'])
-//    ->name('carts.saveorder');
-Route::post('/saveorder', 'ProductController@saveOrder');
+Route::post('/save-order', [
+    ProductController::class, 'saveOrder'])
+   ->name('carts.saveorder');
+//Route::post('/saveorder', 'ProductController@saveOrder');
 //Route::get('/save-order')
 
 
