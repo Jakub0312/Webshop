@@ -5,9 +5,12 @@ namespace App\Http\Controllers\open;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\Orderrow;
 use App\Models\Product;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Session;
 
@@ -56,8 +59,7 @@ class ProductController extends Controller
             return view('public.carts.shopping-cart');
         }
 
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
+        $cart = Session::get('cart');
         $total = $cart->totalPrice;
 
         if(Auth::user()) {
@@ -65,7 +67,6 @@ class ProductController extends Controller
             $address = Address::where('user_id', $users->id)->first();
             return view('public.carts.checkout', ['products' => $cart->items,
                 'totalPrice' => $cart->totalPrice], compact('address'));
-
         }
         else {
             return view('public.carts.checkout', ['products' => $cart->items,
@@ -78,22 +79,23 @@ class ProductController extends Controller
     public function saveOrder()
     {
         $users = User::find(Auth::user()->id);
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
+        $cart = Session::get('cart');
+        //dd($cart);
 
         $order = new Order();
-        $order->user_id = $users->user_id;
+        $order->user_id = Auth::user()->id;
         $order->orderdate = Carbon::now();
-        $order->state_id = 'Placed';
         $order->save();
 
-        foreach ($oldCart as $value) {
+        foreach ($cart->items as $value) {
             $orderrow = new Orderrow();
-            $orderrow->order_id = $order->order_id;
-            $orderrow->product_id = $cart->product_id;
-            $orderrow->amount = $cart->amount;
+            $orderrow->order_id = $order->id;
+            $orderrow->product_id = $value['item']->id;
+            $orderrow->amount = $value['amount'];
             $orderrow->save();
         }
+
+        Session::forget('cart');
 
         return redirect()->route('product.index')->with('message', 'Order succesfully placed!');
 

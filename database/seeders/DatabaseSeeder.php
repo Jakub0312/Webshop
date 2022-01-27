@@ -20,10 +20,8 @@ class DatabaseSeeder extends Seeder
             ProductstateSeeder::class,
             CategorySeeder::class,
             PricetypeSeeder::class,
-<<<<<<< HEAD
             ProductSeeder::class,
-            PriceSeeder::class
-=======
+            PriceSeeder::class,
             StateSeeder::class,
             OrderSeeder::class,
             ProductSeeder::class,
@@ -31,7 +29,6 @@ class DatabaseSeeder extends Seeder
             OrderrowSeeder::class,
             AddresstypeSeeder::class,
             AddressSeeder::class,
->>>>>>> develop
         ]);
     }
 }
