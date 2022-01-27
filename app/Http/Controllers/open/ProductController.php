@@ -5,9 +5,12 @@ namespace App\Http\Controllers\open;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\Orderrow;
 use App\Models\Product;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Session;
 
@@ -79,19 +82,19 @@ class ProductController extends Controller
     {
         $users = User::find(Auth::user()->id);
         $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
+        //$cart = serialize($oldCart);
+        dd($oldCart);
 
         $order = new Order();
-        $order->user_id = $users->user_id;
+        $order->user_id = Auth::user()->id;
         $order->orderdate = Carbon::now();
-        $order->state_id = 'Placed';
         $order->save();
 
         foreach ($oldCart as $value) {
             $orderrow = new Orderrow();
             $orderrow->order_id = $order->order_id;
-            $orderrow->product_id = $cart->product_id;
-            $orderrow->amount = $cart->amount;
+            $orderrow->product_id = $value['item']['id'];
+            $orderrow->amount = $value['amount'];
             $orderrow->save();
         }
 
