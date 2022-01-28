@@ -18,6 +18,19 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ProductstateSeeder::class,
             PricetypeSeeder::class,
+<<<<<<< Updated upstream
+=======
+            ProductSeeder::class,
+            PriceSeeder::class,
+            StateSeeder::class,
+            OrderSeeder::class,
+            ProductSeeder::class,
+            PriceSeeder::class,
+            OrderrowSeeder::class,
+            AddresstypeSeeder::class,
+            AddressSeeder::class,
+            ReviewSeeder::class,
+>>>>>>> Stashed changes
         ]);
     }
 }

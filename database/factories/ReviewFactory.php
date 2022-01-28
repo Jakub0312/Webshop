@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ReviewFactory extends Factory
@@ -22,6 +24,8 @@ class ReviewFactory extends Factory
     public function definition()
     {
         return [
+            'users_id' => User::all()->random()->id,
+            'product_id' => Product::all()->random()->id,
             'title' => $this->faker->title,
             'review' => $this->faker->text
         ];

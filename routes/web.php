@@ -37,10 +37,33 @@ Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, '
 Route::resource('/admin/pricetypes', PricetypeController::Class);
 
 //User routes
+<<<<<<< Updated upstream
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('admin/users/{user}/delete', [UserController::class, 'delete'])
         ->name('users.delete');
     Route::resource('/admin/users', UserController::Class);
+=======
+Route::get('admin/users/{user}/delete', [Admin\UserController::class, 'delete'])
+    ->name('users.delete');
+Route::resource('/admin/users', Admin\UserController::Class);
+
+//Orders routes
+Route::get('admin/orders/{order}/delete', [Admin\OrderController::class, 'delete'])
+    ->name('orders.delete');
+Route::resource('/admin/orders', Admin\OrderController::Class);
+
+//Orderrows routes
+Route::get('admin/orderrows/{orderrow}/delete', [Admin\OrderrowController::class, 'delete'])
+    ->name('orderrows.delete');
+Route::resource('/admin/orderrows', Admin\OrderrowController::Class);
+
+//Reviews routes
+    Route::get('admin/reviews/{review}/delete', [Admin\ReviewController::class, 'delete'])
+        ->name('reviews.delete');
+    Route::resource('/admin/reviews', Admin\ReviewController::Class);
+
+
+>>>>>>> Stashed changes
 });
 
 Route::get('/dashboard', function () {
