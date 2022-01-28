@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Orderrow;
 use Illuminate\Database\Seeder;
 
 class OrderrowSeeder extends Seeder
@@ -13,6 +14,8 @@ class OrderrowSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Orderrow::factory()
+            ->times(10)
+            ->create();
     }
 }

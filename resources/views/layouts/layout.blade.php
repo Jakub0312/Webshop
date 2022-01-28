@@ -95,8 +95,7 @@
                 <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
                    href="#">About us</a>
 
-                <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
-                   href="{{ url('/admin') }}">Admin</a>
+
 
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open"
@@ -118,6 +117,10 @@
                          x-transition:leave-end="transform opacity-0 scale-95"
                          class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
                         <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                            @role('admin')
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
+                               href="/admin">Admin</a>
+                            @endrole
                             @if(Route::has('login'))
                                 @auth
                                     <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
@@ -125,24 +128,41 @@
                                     <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
                                        href="{{ route('logout') }}">Logout</a>
                                 @else
-                                    <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
-                                       href="{{ route('login') }}">Login</a>
-                                @if(Route::has('register'))
-                                    <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
-                                       href="{{ route('register') }}">Signup</a>
-                                @endif
+                                        <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
+                                           href="{{ route('login') }}">Login</a>
+                                    @if(Route::has('register'))
+                                        <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline"
+                                           href="{{ route('register') }}">Signup</a>
+                                    @endif
                                 @endauth
                         </div>
                         @endif
                     </div>
+
                 </div>
+
+                <a href="{{ route('product.shoppingCart') }}" class="relative inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-2 ml-3 text-gray-600 stroke-current hover:text-customgreen-mid" fill="none" viewBox="0 0 26 26" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    @if (Session::has('cart'))
+                        <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
+                        {{ Session::has('cart') ? Session::get('cart')->totalAmount : '' }}
+                    </span>
+                    @else
+
+                    @endif
+
+                </a>
+
 
             </nav>
         </div>
     </div>
 
     @yield('topmenu')
-    
+
+    @yield('alert')
 
     @yield('main')
 

@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
     {
         Product::factory()
         ->times(10)
+        ->hasPrice(2)
         ->create();
     }
 }

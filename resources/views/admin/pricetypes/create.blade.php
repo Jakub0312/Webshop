@@ -32,7 +32,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-80 mr-auto">
-        Toevoegen pricetype
+        Create pricetype
     </h2>
 
     <div class="w-full max-w-xs mx-auto mt-44">
@@ -53,7 +53,7 @@
             @csrf
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                    Naam
+                    Name
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                        @error('name') border-red-500 @enderror"
@@ -62,7 +62,7 @@
 
             <div class="flex items-center justify-between">
                 <button class="bg-customgreen hover:bg-customgreen-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >
-                    Toevoegen
+                    Create
                 </button>
             </div>
         </form>

@@ -13,7 +13,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.index') }}">Overzicht</a>
+                <a href="{{ route('productstates.index') }}">Overview</a>
             </button>
             <button
                 class="ml-6 py-2 block border-b-2 border-transparent
@@ -21,7 +21,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.create') }}">Toevoegen</a>
+                <a href="{{ route('productstates.create') }}">Create</a>
             </button>
         </div>
     </nav>

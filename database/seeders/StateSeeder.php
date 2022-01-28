@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\State;
 use Illuminate\Database\Seeder;
 
 class StateSeeder extends Seeder
@@ -14,9 +14,9 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()
+        State::factory()
             ->times(10)
-            ->create;
+            ->create();
 
     }
 }

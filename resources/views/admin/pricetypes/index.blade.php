@@ -31,7 +31,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-20 mr-auto">
-        Overzicht pricetypes
+        Overview pricetypes
     </h2>
 
     @if(session('message'))

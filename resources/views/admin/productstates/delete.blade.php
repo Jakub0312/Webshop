@@ -14,7 +14,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('productstates.index') }}">Overzicht</a>
+                <a href="{{ route('productstates.index') }}">Overview</a>
             </button>
             <a
                 href=""
@@ -22,7 +22,7 @@
                         dark:text-customgreen-light dark:border-customgreen-light
                         focus:outline-none border-b-2 font-medium capitalize
                         transition duration-500 ease-in-out">
-                Toevoegen
+                Create
             </a>
         </div>
     </nav>
@@ -32,7 +32,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-80 mr-auto">
-        Verwijderen productstate
+        Delete productstate
     </h2>
 
     <div class="w-full max-w-xs mx-auto mt-44">
@@ -55,7 +55,7 @@
             @csrf
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                    Naam
+                    Name
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                        id="name" type="text" placeholder="Naam" name="name" value="{{ $productstate->name }}" disabled>
