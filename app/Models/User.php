@@ -43,8 +43,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-<<<<<<< Updated upstream
-=======
 
     public function order()
     {
@@ -60,5 +58,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
->>>>>>> Stashed changes
 }
