@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\PricetypeController;
 use App\Http\Controllers\Admin\ProductstateController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin as Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,19 +28,19 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 //Productstate routes
-Route::get('admin/productstates/{productstate}/delete', [ProductstateController::class, 'delete'])
+Route::get('admin/productstates/{productstate}/delete', [Admin\ProductstateController::class, 'delete'])
     ->name('productstates.delete');
-Route::resource('/admin/productstates', ProductstateController::class);
+Route::resource('/admin/productstates', Admin\ProductstateController::class);
 
 //Pricetype routes
-Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, 'delete'])
+Route::get('admin/pricetypes/{pricetype}/delete', [Admin\PricetypeController::class, 'delete'])
     ->name('pricetypes.delete');
-Route::resource('/admin/pricetypes', PricetypeController::Class);
+Route::resource('/admin/pricetypes', Admin\PricetypeController::Class);
 
 //User routes
 
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('admin/users/{user}/delete', [UserController::class, 'delete'])
+    Route::get('admin/users/{user}/delete', [Admin\UserController::class, 'delete'])
         ->name('users.delete');
     Route::resource('/admin/users', UserController::Class);
 
