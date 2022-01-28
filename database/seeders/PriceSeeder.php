@@ -15,7 +15,7 @@ class PriceSeeder extends Seeder
     public function run()
     {
         Price::factory()
-        ->times(10)
+        ->times(100)
         ->create();
     }
 }

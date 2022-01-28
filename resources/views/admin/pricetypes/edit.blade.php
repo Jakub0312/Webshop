@@ -14,7 +14,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('pricetypes.index') }}">Overzicht</a>
+                <a href="{{ route('pricetypes.index') }}">Overview</a>
             </button>
             <button
                 class="ml-6 py-2 block border-b-2 border-transparent
@@ -22,7 +22,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('pricetypes.create') }}">Toevoegen</a>
+                <a href="{{ route('pricetypes.create') }}">Create</a>
             </button>
         </div>
     </nav>
@@ -55,7 +55,7 @@
             @csrf
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                    Naam
+                    Name
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                        @error('name') border-red-500 @enderror"

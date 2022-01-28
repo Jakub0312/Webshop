@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
 use App\Models\Orderrow;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderrowFactory extends Factory
@@ -12,7 +14,7 @@ class OrderrowFactory extends Factory
      *
      * @var string
      */
-    protected $model = OrderRow::class;
+    protected $model = Orderrow::class;
 
     /**
      * Define the model's default state.
@@ -23,6 +25,8 @@ class OrderrowFactory extends Factory
     {
         return [
             'amount' => $this->faker->randomFloat(2, 2, 6),
+            'order_id' => Order::all()->random()->id,
+            'product_id' => Product::all()->random()->id
         ];
     }
 }

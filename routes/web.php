@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin as Admin;
+use App\Http\Controllers\open as Open;
 use App\Http\Controllers\admin\PricetypeController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductstateController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin as Admin;
@@ -17,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//HOME
 Route::get('/', function () {
     return view('layouts.layout');
 });
+
+
+
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin', function () {
@@ -27,6 +34,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     });
 });
 
+Route::group(['middleware' => ['role:admin']], function () {
 //Productstate routes
 Route::get('admin/productstates/{productstate}/delete', [Admin\ProductstateController::class, 'delete'])
     ->name('productstates.delete');
@@ -36,6 +44,11 @@ Route::resource('/admin/productstates', Admin\ProductstateController::class);
 Route::get('admin/pricetypes/{pricetype}/delete', [Admin\PricetypeController::class, 'delete'])
     ->name('pricetypes.delete');
 Route::resource('/admin/pricetypes', Admin\PricetypeController::Class);
+
+// Product routes
+Route::get('admin/products/{product}/delete', [Admin\ProductController::class, 'delete'])
+    ->name('products.delete');
+Route::resource('/admin/products', Admin\ProductController::Class);
 
 //User routes
 
@@ -64,6 +77,60 @@ Route::resource('/admin/orderrows', Admin\OrderrowController::Class);
     Route::resource('/admin/reviews', Admin\ReviewController::Class);
 
 });
+
+//PUBLIC PAGE
+
+
+//products
+Route::get('/products', [
+    Open\ProductController::class, 'index'])
+    ->name('product.index');;
+
+
+//Routes for shopping cart
+//adding product to shopping cart
+Route::get('/add-to-cart/{id}', [
+    Open\ProductController::class, 'getAddToCart'])
+    ->name('product.addToCart');
+
+//going to shopping cart
+Route::get('/shopping-cart', [
+    Open\ProductController::class, 'getCart'])
+    ->name('product.shoppingCart');
+
+//Going to checkout
+Route::get('/checkout', [
+    Open\ProductController::class, 'getCheckout'])
+    ->name('carts.checkout');
+
+//place order
+Route::post('/save-order', [
+    Open\ProductController::class, 'saveOrder'])
+   ->name('carts.saveorder');
+
+
+//Profile page
+Route::get('/profile', [
+    Open\UserController::class, 'getIndex'])
+    ->name('profile');
+//edit user information
+Route::get('/profile/edit-profile', [
+    Open\UserController::class, 'editProfile'])
+    ->name('profile.editprofile');
+//add address
+Route::get('/profile/add-address', [
+    Open\UserController::class, 'addAddress'])
+    ->name('profile.addaddress');
+Route::post('/profile/store-address', [
+    Open\UserController::class, 'storeAddress'])
+    ->name('profile.storeaddress');
+//edit address
+Route::get('/profile/edit-address', [
+    Open\UserController::class, 'editAddress'])
+    ->name('profile.editaddress');
+Route::put('/profile/{address}/update-address', [
+    Open\UserController::class, 'updateAddress'])
+    ->name('profile.updateaddress');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -9,21 +9,16 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'specifications', 'stock'];
+    protected $fillable = ['name', 'description', 'specifications', 'stock',];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-//    public function productstate()
-//    {
-//        return $this->belongsTo(Productstate::class);
-//    }
-
-    public function picture()
+    public function productstate()
     {
-        return $this->hasMany(Picture::class);
+        return $this->belongsTo(Productstate::class);
     }
 
     public function price()
@@ -31,9 +26,14 @@ class Product extends Model
         return $this->hasMany(Price::class);
     }
 
+    public function latest_price()
+    {
+        return $this->hasOne(Price::class)->orderBy('effdate', 'desc');
+    }
+
     public function levorderrow()
     {
-        return $this->hasMany(Levorderrow::class);
+        return $this->hasOne(Price::class)->orderBy('effdate', 'desc');
     }
 
     public function orderrow()
@@ -41,8 +41,4 @@ class Product extends Model
         return $this->hasMany(OrderRow::class);
     }
 
-    public function review()
-    {
-        return $this->hasMany(Review::class);
-    }
 }

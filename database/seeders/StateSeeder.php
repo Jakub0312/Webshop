@@ -16,7 +16,7 @@ class StateSeeder extends Seeder
     {
         State::factory()
             ->times(10)
-            ->create;
+            ->create();
 
     }
 }
