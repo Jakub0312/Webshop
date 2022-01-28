@@ -16,10 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleAndPermissionSeeder::class,
             UserSeeder::class,
+            CategorySeeder::class,
             ProductstateSeeder::class,
             PricetypeSeeder::class,
-<<<<<<< Updated upstream
-=======
             ProductSeeder::class,
             PriceSeeder::class,
             StateSeeder::class,
@@ -29,8 +28,7 @@ class DatabaseSeeder extends Seeder
             OrderrowSeeder::class,
             AddresstypeSeeder::class,
             AddressSeeder::class,
-            ReviewSeeder::class,
->>>>>>> Stashed changes
+            ReviewSeeder::class
         ]);
     }
 }
