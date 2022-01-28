@@ -55,20 +55,20 @@ class ProductController extends Controller
 
     public function getCheckout()
     {
+        //if the session has no cart you get returned to the shopping cart page
         if (!Session::has('cart')) {
             return view('public.carts.shopping-cart');
         }
 
         $cart = Session::get('cart');
-        $total = $cart->totalPrice;
 
-        if(Auth::user()) {
+        if(Auth::user()) { //if the user is logged in all your information will be filled in
             $users = User::find(Auth::user()->id);
-            $address = Address::where('user_id', $users->id)->first();
+            $address = Address::where('user_id', $users->id)->first(); //get the address of the user
             return view('public.carts.checkout', ['products' => $cart->items,
                 'totalPrice' => $cart->totalPrice], compact('address'));
         }
-        else {
+        else { //if user is not logged in blank form will be shown
             return view('public.carts.checkout', ['products' => $cart->items,
                 'totalPrice' => $cart->totalPrice]);
 
