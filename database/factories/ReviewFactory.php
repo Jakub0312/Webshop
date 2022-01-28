@@ -24,7 +24,7 @@ class ReviewFactory extends Factory
     public function definition()
     {
         return [
-            'users_id' => User::all()->random()->id,
+            'user_id' => User::all()->random()->id,
             'product_id' => Product::all()->random()->id,
             'title' => $this->faker->title,
             'review' => $this->faker->text

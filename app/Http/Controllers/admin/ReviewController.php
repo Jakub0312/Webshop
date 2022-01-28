@@ -16,6 +16,7 @@ class ReviewController extends Controller
     public function index()
     {
         $reviews = Review::with('user')->get();
+        //dd($reviews);
         return view ('admin.reviews.index', compact('reviews'));
     }
 
