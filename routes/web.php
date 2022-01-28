@@ -1,13 +1,11 @@
 <?php
 
-use App\Http\Controllers\admin\OrderController;
-use App\Http\Controllers\admin\OrderrowController;
+use App\Http\Controllers\admin as Admin;
+use App\Http\Controllers\open as Open;
 use App\Http\Controllers\admin\PricetypeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductstateController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\public\CartController;
-use App\Http\Controllers\public\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,34 +35,34 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 Route::group(['middleware' => ['role:admin']], function () {
 //Productstate routes
-Route::get('admin/productstates/{productstate}/delete', [ProductstateController::class, 'delete'])
+Route::get('admin/productstates/{productstate}/delete', [Admin\ProductstateController::class, 'delete'])
     ->name('productstates.delete');
-Route::resource('/admin/productstates', ProductstateController::class);
+Route::resource('/admin/productstates', Admin\ProductstateController::class);
 
 //Pricetype routes
-Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, 'delete'])
+Route::get('admin/pricetypes/{pricetype}/delete', [Admin\PricetypeController::class, 'delete'])
     ->name('pricetypes.delete');
-Route::resource('/admin/pricetypes', PricetypeController::Class);
+Route::resource('/admin/pricetypes', Admin\PricetypeController::Class);
 
 // Product routes
-Route::get('admin/products/{product}/delete', [ProductController::class, 'delete'])
+Route::get('admin/products/{product}/delete', [Admin\ProductController::class, 'delete'])
     ->name('products.delete');
-Route::resource('/admin/products', ProductController::Class);
+Route::resource('/admin/products', Admin\ProductController::Class);
 
 //User routes
-Route::get('admin/users/{user}/delete', [UserController::class, 'delete'])
+Route::get('admin/users/{user}/delete', [Admin\UserController::class, 'delete'])
     ->name('users.delete');
-Route::resource('/admin/users', UserController::Class);
+Route::resource('/admin/users', Admin\UserController::Class);
 
 //Orders routes
-Route::get('admin/orders/{order}/delete', [OrderController::class, 'delete'])
+Route::get('admin/orders/{order}/delete', [Admin\OrderController::class, 'delete'])
     ->name('orders.delete');
-Route::resource('/admin/orders', OrderController::Class);
+Route::resource('/admin/orders', Admin\OrderController::Class);
 
 //Orderrows routes
-Route::get('admin/orderrows/{orderrow}/delete', [OrderrowController::class, 'delete'])
+Route::get('admin/orderrows/{orderrow}/delete', [Admin\OrderrowController::class, 'delete'])
     ->name('orderrows.delete');
-Route::resource('/admin/orderrows', OrderrowController::Class);
+Route::resource('/admin/orderrows', Admin\OrderrowController::Class);
 
 });
 
@@ -73,29 +71,29 @@ Route::resource('/admin/orderrows', OrderrowController::Class);
 
 //products
 Route::get('/products', [
-    ProductController::class, 'index'])
+    Open\ProductController::class, 'index'])
     ->name('product.index');;
 
 
 //Routes for shopping cart
 //adding product to shopping cart
 Route::get('/add-to-cart/{id}', [
-    ProductController::class, 'getAddToCart'])
+    Open\ProductController::class, 'getAddToCart'])
     ->name('product.addToCart');
 
 //going to shopping cart
 Route::get('/shopping-cart', [
-    ProductController::class, 'getCart'])
+    Open\ProductController::class, 'getCart'])
     ->name('product.shoppingCart');
 
 //Going to checkout
 Route::get('/checkout', [
-    ProductController::class, 'getCheckout'])
+    Open\ProductController::class, 'getCheckout'])
     ->name('carts.checkout');
 
 //place order
 Route::post('/save-order', [
-    ProductController::class, 'saveOrder'])
+    Open\ProductController::class, 'saveOrder'])
    ->name('carts.saveorder');
 //Route::post('/saveorder', 'ProductController@saveOrder');
 //Route::get('/save-order')
