@@ -37,12 +37,12 @@ Route::get('admin/pricetypes/{pricetype}/delete', [PricetypeController::class, '
 Route::resource('/admin/pricetypes', PricetypeController::Class);
 
 //User routes
-<<<<<<< Updated upstream
+
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('admin/users/{user}/delete', [UserController::class, 'delete'])
         ->name('users.delete');
     Route::resource('/admin/users', UserController::Class);
-=======
+
 Route::get('admin/users/{user}/delete', [Admin\UserController::class, 'delete'])
     ->name('users.delete');
 Route::resource('/admin/users', Admin\UserController::Class);
@@ -62,8 +62,6 @@ Route::resource('/admin/orderrows', Admin\OrderrowController::Class);
         ->name('reviews.delete');
     Route::resource('/admin/reviews', Admin\ReviewController::Class);
 
-
->>>>>>> Stashed changes
 });
 
 Route::get('/dashboard', function () {
