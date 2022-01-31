@@ -119,6 +119,13 @@ Route::get('/profile/edit-address', [
 Route::put('/profile/{address}/update-address', [
     Open\UserController::class, 'updateAddress'])
     ->name('profile.updateaddress');
+//edit profile
+Route::get('/profile/edit-profile', [
+    Open\UserController::class, 'editProfile'])
+    ->name('profile.editprofile');
+Route::put('/profile/{user}/update-profile', [
+    Open\UserController::class, 'updateProfile'])
+    ->name('profile.updateprofile');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

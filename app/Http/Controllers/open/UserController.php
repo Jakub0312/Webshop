@@ -5,6 +5,7 @@ namespace App\Http\Controllers\open;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAddressRequest;
 use App\Http\Requests\UpdateAddressRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Address;
 use App\Models\Addresstype;
 use App\Models\User;
@@ -83,7 +84,7 @@ class UserController extends Controller
     {
         $address = Address::where('user_id', Auth::user()->id)->first();
         $addresstypes = Addresstype::all();
-        return view('public.profiles.edit', compact('address', 'addresstypes'));
+        return view('public.profiles.editaddress', compact('address', 'addresstypes'));
     }
 
     /**
@@ -104,6 +105,21 @@ class UserController extends Controller
         $address->save();
 
         return redirect()->route('profile')->with('message', 'Address succesfully updated');
+    }
+
+    public function editProfile()
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+        return view('public.profiles.editprofile', compact('user'));
+    }
+
+    public function updateProfile(UpdateUserRequest $request, User $user)
+    {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->route('profile')->with('message', 'Profile succesfully updated');
     }
 
     /**
