@@ -95,9 +95,30 @@ Route::get('/checkout', [
 Route::post('/save-order', [
     Open\ProductController::class, 'saveOrder'])
    ->name('carts.saveorder');
-//Route::post('/saveorder', 'ProductController@saveOrder');
-//Route::get('/save-order')
 
+
+//Profile page
+Route::get('/profile', [
+    Open\UserController::class, 'getIndex'])
+    ->name('profile');
+//edit user information
+Route::get('/profile/edit-profile', [
+    Open\UserController::class, 'editProfile'])
+    ->name('profile.editprofile');
+//add address
+Route::get('/profile/add-address', [
+    Open\UserController::class, 'addAddress'])
+    ->name('profile.addaddress');
+Route::post('/profile/store-address', [
+    Open\UserController::class, 'storeAddress'])
+    ->name('profile.storeaddress');
+//edit address
+Route::get('/profile/edit-address', [
+    Open\UserController::class, 'editAddress'])
+    ->name('profile.editaddress');
+Route::put('/profile/{address}/update-address', [
+    Open\UserController::class, 'updateAddress'])
+    ->name('profile.updateaddress');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

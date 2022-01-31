@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                         Email address
                     </label>
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
@@ -28,25 +28,26 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="country">
                         Country
                     </label>
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                            @error('country') border-red-500 @enderror"
-                           id="country" type="text" placeholder="Country" name="scountry" value="{{ old('street-name', $address->country) }}" disabled>
+                           id="country" type="text" placeholder="Country" name="country" value="{{ old('country', $address->country) }}" disabled>
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="streetname">
                         Street name + house number
                     </label>
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
-                           @error('street-name') border-red-500 @enderror"
-                           id="street-name" type="text" placeholder="Street name" name="street-name" value="{{ old('street-name', $address->address) }}" disabled>
+                           @error('streetname') border-red-500 @enderror"
+                           id="streetname" type="text" placeholder="Street name" name="streetname" value="{{ old('streetname', $address->address) }}" disabled>
+
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
                         City
                     </label>
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
@@ -55,7 +56,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="zipcode">
                         Zip code
                     </label>
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
@@ -88,7 +89,7 @@
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                     Email address
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
@@ -97,7 +98,7 @@
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="country">
                     Country
                 </label>
                 <select
@@ -112,25 +113,25 @@
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="streetname">
                     Street name + house number
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
-                           @error('street-name') border-red-500 @enderror"
-                       id="street-name" type="text" placeholder="Street name" name="street-name" value="{{ old('street-name') }}" required>
+                           @error('streetname') border-red-500 @enderror"
+                       id="streetname" type="text" placeholder="Street name" name="streetname" value="{{ old('streetname') }}" required>
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="city">
                     City
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
-                           @error('name') border-red-500 @enderror"
-                       id="name" type="text" placeholder="Name" name="name" value="{{ old('street-name') }}" required>
+                           @error('city') border-red-500 @enderror"
+                       id="city" type="text" placeholder="City" name="city" value="{{ old('city') }}" required>
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="zipcode">
                     Zip code
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
