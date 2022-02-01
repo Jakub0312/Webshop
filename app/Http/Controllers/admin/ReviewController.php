@@ -15,7 +15,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::with('user')->get();
+        $reviews = Review::with('product')->get();
         //dd($reviews);
         return view ('admin.reviews.index', compact('reviews'));
     }
@@ -75,6 +75,13 @@ class ReviewController extends Controller
         //
     }
 
+    public function delete(Review $review)
+    {
+        return view('admin.reviews.delete', compact('review'));
+    }
+
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -83,6 +90,9 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        $review->delete();
+        return redirect()->route('reviews.index')->with('status', 'Review deleted');
     }
+
+
 }
