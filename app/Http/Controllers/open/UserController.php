@@ -23,11 +23,13 @@ class UserController extends Controller
     {
 
         $user = User::find(Auth::user()->id);//
+        //$address = Address::where('user_id', Auth::user()->id)->get(); //Deze gebruiken om alle adressen te laten zien. Check profile.blade voor de andere code
         $address = Address::where('user_id', Auth::user()->id)->first();
         if (empty($address)) {
             return view('public.profiles.profile', compact('user'));
         } else {
             return view('public.profiles.profile', compact('user', 'address'));
+
         }
     }
 
