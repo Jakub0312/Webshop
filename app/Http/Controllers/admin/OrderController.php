@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Address;
 use App\Models\Order;
 use App\Models\Orderrow;
 use App\Models\State;
@@ -61,7 +62,8 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $orderrows = Orderrow::all();
-        return view ('admin.orders.show', compact('order', 'orderrows'));
+        $address = Address::where('user_id', $order->user_id)->first();
+        return view ('admin.orders.show', compact('order', 'orderrows', 'address'));
     }
 
     /**

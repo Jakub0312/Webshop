@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\open;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAddressRequest;
 use App\Models\Address;
+use App\Models\Addresstype;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Orderrow;
@@ -39,7 +41,7 @@ class ProductController extends Controller
         $request->session()->put('cart', $cart);
         //cart laten zien door dye dumping
         //dd($request->session()->get('cart'));
-        return redirect()->route('product.index');
+        return redirect()->route('publicproduct.index');
     }
 
     public function getCart()
@@ -61,24 +63,38 @@ class ProductController extends Controller
         }
 
         $cart = Session::get('cart');
+        $addresstypes = Addresstype::all();
 
         if(Auth::user()) { //if the user is logged in all your information will be filled in
             $users = User::find(Auth::user()->id);
             $address = Address::where('user_id', $users->id)->first(); //get the address of the user
             return view('public.carts.checkout', ['products' => $cart->items,
-                'totalPrice' => $cart->totalPrice], compact('address'));
+                'totalPrice' => $cart->totalPrice], compact('address', 'addresstypes'));
         }
         else { //if user is not logged in blank form will be shown
             return view('public.carts.checkout', ['products' => $cart->items,
-                'totalPrice' => $cart->totalPrice]);
+                'totalPrice' => $cart->totalPrice], compact('addresstypes'));
 
         }
 
     }
 
-    public function saveOrder()
+    public function saveOrder(StoreAddressRequest $request)
     {
-        $users = User::find(Auth::user()->id);
+       //$users = User::find(Auth::user()->id);
+        $checkAddress = Address::where('user_id', Auth::user()->id)->first();
+        //dd($checkAddress);
+        if(empty($checkAddress))
+        {
+            $address = new Address();
+            $address->user_id = Auth::user()->id;
+            $address->address = $request->streetname;
+            $address->city = $request->city;
+            $address->zipcode = $request->zipcode;
+            $address->country = $request->country;
+            $address->addresstype_id = $request->input('addresstype');
+            $address->save();
+        }
         $cart = Session::get('cart');
         //dd($cart);
 
@@ -97,7 +113,7 @@ class ProductController extends Controller
 
         Session::forget('cart');
 
-        return redirect()->route('product.index')->with('message', 'Order succesfully placed!');
+        return redirect()->route('publicproduct.index')->with('message', 'Order succesfully placed!');
 
     }
 
