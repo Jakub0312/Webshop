@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Price;
+use App\Models\Pricetype;
 use App\Models\Product;
 use App\Models\Productstate;
 use Carbon\Carbon;
@@ -79,7 +80,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $productstates = Productstate::all();
-        return view('admin.products.edit', compact('categories', 'product'));
+        $pricetypes = Pricetype::all();
+        return view('admin.products.edit', compact('categories', 'product', 'pricetypes'));
     }
 
     /**

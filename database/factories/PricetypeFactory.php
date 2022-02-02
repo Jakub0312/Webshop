@@ -15,6 +15,11 @@ class PricetypeFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'category_id' => Category::all()->random()->id,
+            'description' => $this->faker->paragraph(5),
+            'specifications' => $this->faker->paragraph(5),
+            'productstate_id' => Productstate::all()->random()->id,
+            'stock' => $this->faker->numberBetween(0, 500)
         ];
     }
 }
