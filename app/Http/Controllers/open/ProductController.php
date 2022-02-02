@@ -41,7 +41,7 @@ class ProductController extends Controller
         $request->session()->put('cart', $cart);
         //cart laten zien door dye dumping
         //dd($request->session()->get('cart'));
-        return redirect()->route('product.index');
+        return redirect()->route('publicproduct.index');
     }
 
     public function getCart()
@@ -113,7 +113,7 @@ class ProductController extends Controller
 
         Session::forget('cart');
 
-        return redirect()->route('product.index')->with('message', 'Order succesfully placed!');
+        return redirect()->route('publicproduct.index')->with('message', 'Order succesfully placed!');
 
     }
 

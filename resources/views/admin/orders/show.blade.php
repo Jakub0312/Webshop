@@ -42,7 +42,7 @@
         <div class="py-4 px-6">
             <h1 class="text-2xl font-semibold text-gray-800">Order id: {{ $order->id }}</h1>
             <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Customer: </p>
-            
+
             <p class="py-2 text-lg text-gray-700 inline-block">{{ $order->user->name }}</p><br>
             <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Address: </p>
             <p class="py-1 text-lg text-gray-700 inline-block">{{ $address->address }}</p><br>

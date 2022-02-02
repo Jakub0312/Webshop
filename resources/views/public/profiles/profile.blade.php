@@ -86,7 +86,13 @@
                     </button>
                 </a>
             @endif
-
+            <div>
+            <a href="{{ route('profile.deleteprofile') }}">
+                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded none text-l mt-3">
+                    Delete profile
+                </button>
+            </a>
+            </div>
         </div>
     </div>
 
