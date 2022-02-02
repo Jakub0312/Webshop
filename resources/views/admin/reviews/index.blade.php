@@ -15,14 +15,6 @@
                         transition duration-500 ease-in-out">
                 Overview
             </a>
-            <button
-                class="ml-6 py-2 block border-b-2 border-transparent
-                        focus:outline-none font-medium capitalize text-center
-                        focus:text-green-500 focus:border-customgreen
-                        dark-focus:text-customgreen-light dark-focus:border-customgreen-light
-                        transition duration-500 ease-in-out">
-                <a href="{{ route('reviews.create') }}">Create</a>
-            </button>
         </div>
     </nav>
 @endsection
@@ -52,21 +44,21 @@
                     </div>
                 </th>
 
+                <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
+                    <div class="flex items-center justify-center">
+                        Product id
+                    </div>
+                </th>
 
                 <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
                     <div class="flex items-center justify-center">
-                        Product
+                        Review
                     </div>
                 </th>
 
                 <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
                     <div class="flex items-center justify-center">
                         Details
-                    </div>
-                </th>
-                <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
-                    <div class="flex items-center justify-center">
-                        Edit
                     </div>
                 </th>
                 <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
@@ -85,17 +77,18 @@
                         {{ $review->id }}
                     </td>
                     <td class="p-2 border-r">
-                        {{ $review->product->name }}
+                        {{ $review->product_id }}
+                    </td>
+
+                    <td class="p-2 border-r">
+                        {{ $review->review }}
                     </td>
 
                     <td class="p-2 border-r">
                         <a href="{{ route('reviews.show', ['review' => $review->id])  }}"
                            class="px-4 py-1 text-sm text-customgreen-dark bg-customgreen-light rounded-full">Details</a>
                     </td>
-                    <td class="p-2 border-r">
-                        <a href="{{ route('reviews.edit', ['review' => $review->id])  }}"
-                           class="px-4 py-1 text-sm text-blue-600 bg-blue-200 rounded-full">Edit</a>
-                    </td>
+
                     <td class="p-2 border-r">
                         <a href="{{ route('reviews.delete', ['review' => $review->id])  }}"
                            class="px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full">Delete</a>

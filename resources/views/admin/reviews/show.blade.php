@@ -15,14 +15,6 @@
                         transition duration-500 ease-in-out">
                 <a href="{{ route('reviews.index') }}">Overview</a>
             </button>
-            <button
-                class="ml-6 py-2 block border-b-2 border-transparent
-                        focus:outline-none font-medium capitalize text-center
-                        focus:text-green-500 focus:border-customgreen
-                        dark-focus:text-customgreen-light dark-focus:border-customgreen-light
-                        transition duration-500 ease-in-out">
-                <a href="{{ route('reviews.create') }}">Create</a>
-            </button>
         </div>
     </nav>
 @endsection
@@ -42,11 +34,9 @@
         </div>
         <div class="py-4 px-6">
             <h1 class="text-2xl font-semibold text-gray-800">Review id: {{ $review->id }}</h1>
-            <p class="py-2 text-lg text-gray-700">Review id: {{ $review->id }}
-                <a href="{{ route('reviews.show', ['review' => $review->id])  }}"
-                   class="px-4 py-2 text-lg text-customgreen-dark rounded-full text-decoration-line underline">Show order</a>
-            </p>
-            <p class="py-2 text-lg text-gray-700">Product: </p>
+            <h2 class="py-2 text-lg text-gray-700">Product id: {{ $review->product_id }}</h2>
+            <h2 class="py-2 text-lg text-gray-700">User id: {{ $review->user_id }}</h2>
+            <p class="py-2 text-lg text-gray-700">Review : {{ $review->review }}</p>
         </div>
     </div>
 
