@@ -81,7 +81,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $productstates = Productstate::all();
         $pricetypes = Pricetype::all();
-        return view('admin.products.edit', compact('categories', 'product', 'pricetypes'));
+        return view('admin.products.edit', compact('categories', 'product', 'pricetypes', 'productstates'));
     }
 
     /**
@@ -96,6 +96,8 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->specifications = $request->specifications;
+        $product->stock = $request->stock;
+        $product->productstate_id = $request->productstate_id;
         $product->category_id = $request->category_id;
         $product->save();
 
@@ -105,6 +107,7 @@ class ProductController extends Controller
             $price->price = $request->price;
             $price->effdate = Carbon::now();
             $price->product_id = $product->id;
+            $price->pricetype_id = '1'; //Voor nu nog 1 aangezien ik niet weet wat ik hiermee moet
             $price->save();
         }
 
