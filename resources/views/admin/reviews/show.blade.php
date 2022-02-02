@@ -41,7 +41,7 @@
             <h1 class="mx-3 text-white font-semibold text-lg">Review</h1>
         </div>
         <div class="py-4 px-6">
-            <h1 class="text-2xl font-semibold text-gray-800">Order row id: {{ $review->id }}</h1>
+            <h1 class="text-2xl font-semibold text-gray-800">Review id: {{ $review->id }}</h1>
             <p class="py-2 text-lg text-gray-700">Review id: {{ $review->id }}
                 <a href="{{ route('reviews.show', ['review' => $review->id])  }}"
                    class="px-4 py-2 text-lg text-customgreen-dark rounded-full text-decoration-line underline">Show order</a>
