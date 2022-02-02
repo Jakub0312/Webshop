@@ -41,8 +41,18 @@
         </div>
         <div class="py-4 px-6">
             <h1 class="text-2xl font-semibold text-gray-800">Order id: {{ $order->id }}</h1>
-            <p class="py-2 text-lg text-gray-700">Customer: {{ $order->user->name }}</p>
-            <p class="py-2 text-lg text-gray-700">Products Ordered:</p>
+            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Customer: </p>
+
+            <p class="py-2 text-lg text-gray-700 inline-block">{{ $order->user->name }}</p><br>
+            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Address: </p>
+            <p class="py-1 text-lg text-gray-700 inline-block">{{ $address->address }}</p><br>
+            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Country: </p>
+            <p class="py-1 text-lg text-gray-700 inline-block">{{ $address->country }}</p><br>
+            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">City: </p>
+            <p class="py-1 text-lg text-gray-700 inline-block">{{ $address->city }}</p><br>
+            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Zipcode:  </p>
+            <p class="py-1 text-lg text-gray-700 inline-block">{{ $address->zipcode }}</p><br><br>
+            <h3 class="text-gray-700 font-semibold text-lg">Products Ordered:</h3>
             <table class="w-full border">
                 <thead>
                 <tr class="bg-gray-50 border-b">

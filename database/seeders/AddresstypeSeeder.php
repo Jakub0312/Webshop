@@ -14,8 +14,16 @@ class AddresstypeSeeder extends Seeder
      */
     public function run()
     {
-        Addresstype::factory()
-            ->times(10)
-            ->create();
+        Addresstype::factory()->create([
+            'name' => 'Shipping address'
+        ]);
+
+        Addresstype::factory()->create([
+            'name' => 'Billing address'
+        ]);
+
+        Addresstype::factory()->create([
+            'name' => 'Shipping + Billing address'
+        ]);
     }
 }
