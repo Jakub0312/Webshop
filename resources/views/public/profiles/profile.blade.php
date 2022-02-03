@@ -31,6 +31,7 @@
         <div class="py-4 px-6 ">
             <h1 class="text-2xl font-semibold text-gray-800">Address</h1>
             @if (isset($address))
+{{--                @if($address->where('user_id', Auth::user()->id)->count() === 1)--}}
                 <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Address: </p>
                 <p class="py-1 text-lg text-gray-700 inline-block">{{ $address->address }}</p><br>
                 <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Country: </p>
@@ -44,6 +45,39 @@
                         Edit address
                     </button>
                 </a>
+
+{{--        Deze code kan gebruikt worden om alle adressen te laten zien die aan de user gelinkt zijn        --}}
+{{--        Wordt nog niet gebruikt want met edit moet er nog zooi gedaan worden    --}}
+{{--                @else--}}
+{{--                    @foreach($address as $value)--}}
+
+{{--                        @if ($value->addresstype_id === 1)--}}
+{{--                            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Address type: </p>--}}
+{{--                            <p class="py-1 text-lg text-gray-700 inline-block">Shipping Address</p><br>--}}
+{{--                            @elseif ($value->addresstype_id === 2)--}}
+{{--                            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Address type: </p>--}}
+{{--                            <p class="py-1 text-lg text-gray-700 inline-block">Billing Address</p><br>--}}
+{{--                        @else--}}
+{{--                            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Address type: </p>--}}
+{{--                            <p class="py-1 text-lg text-gray-700 inline-block">Shipping + Billing Address</p><br>--}}
+{{--                        @endif--}}
+
+{{--                        <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Address: </p>--}}
+{{--                        <p class="py-1 text-lg text-gray-700 inline-block">{{ $value->address }}</p><br>--}}
+{{--                        <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Country: </p>--}}
+{{--                        <p class="py-1 text-lg text-gray-700 inline-block">{{ $value->country }}</p><br>--}}
+{{--                        <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">City: </p>--}}
+{{--                        <p class="py-1 text-lg text-gray-700 inline-block">{{ $value->city }}</p><br>--}}
+{{--                        <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Zipcode:  </p>--}}
+{{--                        <p class="py-1 text-lg text-gray-700 inline-block">{{ $value->zipcode }}</p><br>--}}
+{{--                        <a href="{{ route('profile.editaddress') }}">--}}
+{{--                            <button class="bg-yellow-200 hover:bg-yellow-300 text-yellow-500 font-bold py-3 px-5 rounded none text-l mt-3">--}}
+{{--                                Edit address--}}
+{{--                            </button>--}}
+{{--                        </a>--}}
+{{--                        <br>--}}
+{{--                    @endforeach--}}
+{{--                @endif--}}
             @else
                 <p class="py-1 text-lg text-gray-700">You don't have an address linked to your account.<br> Please add an address!</p>
                 <a href="{{ route('profile.addaddress') }}">
@@ -52,7 +86,13 @@
                     </button>
                 </a>
             @endif
-
+            <div>
+            <a href="{{ route('profile.deleteprofile') }}">
+                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded none text-l mt-3">
+                    Delete profile
+                </button>
+            </a>
+            </div>
         </div>
     </div>
 

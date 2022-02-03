@@ -76,7 +76,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 //products
 Route::get('/products', [
     Open\ProductController::class, 'index'])
-    ->name('product.index');;
+    ->name('publicproduct.index');
 
 
 //Routes for shopping cart
@@ -84,17 +84,14 @@ Route::get('/products', [
 Route::get('/add-to-cart/{id}', [
     Open\ProductController::class, 'getAddToCart'])
     ->name('product.addToCart');
-
 //going to shopping cart
 Route::get('/shopping-cart', [
     Open\ProductController::class, 'getCart'])
     ->name('product.shoppingCart');
-
 //Going to checkout
 Route::get('/checkout', [
     Open\ProductController::class, 'getCheckout'])
     ->name('carts.checkout');
-
 //place order
 Route::post('/save-order', [
     Open\ProductController::class, 'saveOrder'])
@@ -123,6 +120,20 @@ Route::get('/profile/edit-address', [
 Route::put('/profile/{address}/update-address', [
     Open\UserController::class, 'updateAddress'])
     ->name('profile.updateaddress');
+//edit profile
+Route::get('/profile/edit-profile', [
+    Open\UserController::class, 'editProfile'])
+    ->name('profile.editprofile');
+Route::put('/profile/{user}/update-profile', [
+    Open\UserController::class, 'updateProfile'])
+    ->name('profile.updateprofile');
+//Delete profile
+Route::get('/profile/delete-profile', [
+    Open\UserController::class, 'deleteProfile'])
+    ->name('profile.deleteprofile');
+Route::delete('/profile/{user}/destroy-profile', [
+    Open\UserController::class, 'destroyProfile'])
+    ->name('profile.destroyProfile');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

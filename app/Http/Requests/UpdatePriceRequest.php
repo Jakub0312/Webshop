@@ -23,8 +23,9 @@ class UpdatePriceRequest extends FormRequest
      */
     public function rules()
     {
+        $price=$this->route('price');
         return [
-            //
+            'name' => 'required|string|max:45|unique:price,name,'.$price->id
         ];
     }
 }

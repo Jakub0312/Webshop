@@ -2,7 +2,7 @@
 
 @section('main')
 
-    @if (Auth::check())
+    @if (Auth::check() && !empty($address))
 
         <div class="flex justify-center mt-10">
             <form class="bg-white shadow-md rounded border .border-customgreen px-8 pt-6 pb-8 mb-4 w-1/4 ml-10"
@@ -71,6 +71,7 @@
                 </div>
             </form>
 
+
             @else
 
 
@@ -79,13 +80,23 @@
               action="{{ route('carts.saveorder') }}" method="POST">
             @csrf
 
+            @if($errors->any())
+                <div class="bg-red-200 text-red-200 rounded-lg shadow-md p-6 pr-10 mb-8">
+                    <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                     Name
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                            @error('name') border-red-500 @enderror"
-                       id="name" type="text" placeholder="Name" name="name" value="{{ old('name') }}" required>
+                       id="name" type="text" placeholder="Name" name="name" value="{{ old('name', Auth::user()->name ) }}" required>
             </div>
 
             <div class="mb-4">
@@ -94,7 +105,7 @@
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                            @error('email') border-red-500 @enderror"
-                       id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                       id="email" type="email" placeholder="Email" name="email" value="{{ old('email', Auth::user()->email) }}" required>
             </div>
 
             <div class="mb-4">
@@ -137,6 +148,23 @@
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                            @error('zipcode') border-red-500 @enderror"
                        id="zipcode" type="text" placeholder="Zipcode" name="zipcode" value="{{ old('zipcode') }}" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="addresstype">
+                    Address type
+                </label>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="addresstype" id="addresstype" required>
+                    @foreach($addresstypes as $addresstype)
+                        <option value="{{ $addresstype->id }}"
+                                @if( old('addresstype') == $addresstype->id)
+                                selected
+                            @endif
+                        >{{ $addresstype->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="flex items-center justify-between">
