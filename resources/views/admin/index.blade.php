@@ -25,6 +25,21 @@
                 </a>
             </div>
 
+            {{--Products routing--}}
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <a href="{{ route('products.index') }}">
+                    <div class="border border-gray-200 p-6 rounded-lg">
+                        <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Products</h2>
+                    </div>
+                </a>
+            </div>
+
             {{--Pricetypes routing--}}
             <div class="xl:w-1/3 md:w-1/2 p-4">
                 <a href="{{ route('pricetypes.index') }}">
@@ -102,8 +117,4 @@
     </div>
     </div>
 </section>
-
-    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4"
-       href=" {{ route('products.index') }}">Products</a><br>
-
 @endsection
