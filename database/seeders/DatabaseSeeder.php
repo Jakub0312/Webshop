@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             OrderrowSeeder::class,
             AddresstypeSeeder::class,
             AddressSeeder::class,
+            ReviewSeeder::class
         ]);
     }
 }
