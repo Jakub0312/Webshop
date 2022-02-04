@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             ProductstateSeeder::class,
-            CategorySeeder::class,
             PricetypeSeeder::class,
             ProductSeeder::class,
             PriceSeeder::class,

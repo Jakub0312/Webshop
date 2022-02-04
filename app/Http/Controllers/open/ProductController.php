@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\open;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAccountRequest;
 use App\Http\Requests\StoreAddressRequest;
 use App\Models\Address;
 use App\Models\Addresstype;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Orderrow;
 use App\Models\Product;
@@ -30,23 +32,27 @@ class ProductController extends Controller
         return view('public.products.index', compact('products'));
     }
 
-    // SHOPPING CART FUNCTIONS
-    public function getAddToCart(Request $request, $id)
+    public function getCategory(Category $category)
     {
-        $product = Product::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->add($product, $product->id);
+        $products = Product::where('category_id', $category->id)->get(); //pakt alle producten met id die in de url staat
+        return view('public.products.index', compact('products'));
+    }
 
-        $request->session()->put('cart', $cart);
-        //cart laten zien door dye dumping
-        //dd($request->session()->get('cart'));
+    // SHOPPING CART FUNCTIONS
+    public function getAddToCart(Request $request, $id) //toevoegen van een item aan winkelmandje
+    {
+        $product = Product::find($id); //zoekt het product op
+        $oldCart = Session::has('cart') ? Session::get('cart') : null; //checkt of de session "Cart" al bestaat, zo niet wordt die aangemaakt
+        $cart = new Cart($oldCart); //Nieuw model aangemaakt met de informatie die al in de oude cart zat
+        $cart->add($product, $product->id); //product wordt toegevoegd aan de cart
+
+        $request->session()->put('cart', $cart); //Via request wordt de Session cart geupdate met de net nieuw aangemaakte cart
         return redirect()->route('publicproduct.index');
     }
 
     public function getCart()
     {
-        if (!Session::has('cart')) {
+        if (!Session::has('cart')) { //als de session cart nog niet bestaat wordt die zonder variabelen geroute
             return view('public.carts.shopping-cart');
         }
         $oldCart = Session::get('cart');
@@ -81,7 +87,7 @@ class ProductController extends Controller
 
     public function saveOrder(StoreAddressRequest $request)
     {
-       //$users = User::find(Auth::user()->id);
+        //$users = User::find(Auth::user()->id);
         $checkAddress = Address::where('user_id', Auth::user()->id)->first();
         //dd($checkAddress);
         if(empty($checkAddress))
@@ -116,5 +122,6 @@ class ProductController extends Controller
         return redirect()->route('publicproduct.index')->with('message', 'Order succesfully placed!');
 
     }
+
 
 }
