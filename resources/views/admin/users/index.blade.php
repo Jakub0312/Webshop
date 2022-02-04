@@ -52,6 +52,12 @@
 
                 <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
                     <div class="flex items-center justify-center">
+                        Role
+                    </div>
+                </th>
+
+                <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
+                    <div class="flex items-center justify-center">
                         Email
                     </div>
                 </th>
@@ -82,6 +88,7 @@
                 <tr class="bg-gray-100 text-center border-b text-sm text-gray-700">
                     <td class="p-2 border-r">{{ $user->id }}</td>
                     <td class="p-2 border-r">{{ $user->name }}</td>
+
                     <td class="p-2 border-r">{{ $user->email }}</td>
                     <td class="p-2 border-r">
                         <a href="{{ route('users.show', ['user' => $user->id])  }}"
