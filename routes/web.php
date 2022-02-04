@@ -21,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 //HOME
 Route::get('/', function () {
-    return view('layouts.layout');
+    return view('public.index');
 });
+Route::get('/products/{category}', [
+    Open\ProductController::class, 'getCategory'])
+    ->name('category.index');
 
 
 Route::group(['middleware' => ['role:admin']], function () {
