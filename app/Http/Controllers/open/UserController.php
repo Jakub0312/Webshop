@@ -62,7 +62,7 @@ class UserController extends Controller
         $address->addresstype_id = $request->input('addresstype');
         $address->save();
 
-        return redirect()->route('profile')->with('message', 'Address succesfully added');
+        return redirect()->route('profile')->with('message', 'You have succesfully added an address to your account!');
     }
 
     /**
@@ -106,7 +106,7 @@ class UserController extends Controller
         $address->addresstype_id = $request->input('addresstype');
         $address->save();
 
-        return redirect()->route('profile')->with('message', 'Address succesfully updated');
+        return redirect()->route('profile')->with('message', 'Your address has successfully been updated!');
     }
 
     public function editProfile()
@@ -142,6 +142,6 @@ class UserController extends Controller
             $address->delete();
         }
         $user->delete();
-        return redirect()->route('publicproduct.index')->with('message', 'Profile succesvol verwijderd!'); //voor nu naar products index geroute omdat we geen home pagina hebben
+        return redirect()->route('publicproduct.index')->with('message', 'Your profile has successfully been deleted!'); //voor nu naar products index geroute omdat we geen home pagina hebben
     }
 }
