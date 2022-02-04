@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Price extends Model
+class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['price', 'effdate'];
-
-    public function product()
+    public function Product()
     {
         return $this->belongsTo(Product::class);
     }

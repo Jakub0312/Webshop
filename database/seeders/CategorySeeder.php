@@ -14,8 +14,32 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()
-        ->times(10)
-        ->create();
+        Category::factory()->create([
+            'name' => 'Processors'
+        ]);
+        Category::factory()->create([
+            'name' => 'Graphics Cards'
+        ]);
+        Category::factory()->create([
+            'name' => 'Motherboards'
+        ]);
+        Category::factory()->create([
+            'name' => 'Ram'
+        ]);
+        Category::factory()->create([
+            'name' => 'Harddrives'
+        ]);
+        Category::factory()->create([
+            'name' => 'SSD (Solid State Drive)'
+        ]);
+        Category::factory()->create([
+            'name' => 'Power Supplies'
+        ]);
+        Category::factory()->create([
+            'name' => 'Cases'
+        ]);
+        Category::factory()->create([
+            'name' => 'Fans'
+        ]);
     }
 }

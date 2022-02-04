@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->string('title',150);
             $table->mediumText('review');
-            $table->foreignId('users_id');
+            $table->foreignId('user_id');
             $table->foreignId('product_id');
             $table->timestamps();
         });

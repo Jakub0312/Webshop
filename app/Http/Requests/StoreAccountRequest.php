@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAddressRequest extends FormRequest
+class StoreAccountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreAddressRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,11 +24,7 @@ class StoreAddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'streetname' => 'string|min:5|max:100',
-            'zipcode' => 'string|min:5|max:15',
-            'city' => 'string|min:5|max:100',
-            'country' => 'string|min:5|max:45',
-            'addresstype' => 'integer',
+            //
         ];
     }
 }

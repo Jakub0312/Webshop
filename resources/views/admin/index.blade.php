@@ -6,19 +6,115 @@
         Admin
     </h2>
 
-    <a class="px-4 py-2 mt-5 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4"
-       href="{{ route('productstates.index') }}">Product states</a><br>
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto ">
+        <div class="flex flex-wrap -m-4">
 
-    <a class="px-4 py-2 mt-5 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4"
-       href="{{ route('pricetypes.index') }}">Price types</a><br>
+            {{--Productstates routing--}}
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <a href="{{ route('productstates.index') }}">
+                    <div class="border border-gray-200 p-6 rounded-lg">
+                        <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Product states</h2>
+                    </div>
+                </a>
+            </div>
 
-    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4"
-       href="{{ route('users.index') }}">Users</a><br>
+            {{--Products routing--}}
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <a href="{{ route('products.index') }}">
+                    <div class="border border-gray-200 p-6 rounded-lg">
+                        <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Products</h2>
+                    </div>
+                </a>
+            </div>
 
-    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4"
-       href="{{ route('orders.index') }}">Orders</a><br>
+            {{--Pricetypes routing--}}
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <a href="{{ route('pricetypes.index') }}">
+                    <div class="border border-gray-200 p-6 rounded-lg">
+                        <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Price types</h2>
+                    </div>
+                </a>
+            </div>
 
-    <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent  dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4"
-       href=" {{ route('orderrows.index') }}">Orderrows</a><br>
+            {{--Users routing--}}
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <a href="{{ route('users.index') }}">
+                 <div class="border border-gray-200 p-6 rounded-lg">
+                     <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                             <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                             <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Users</h2>
+                    </div>
+                </a>
+            </div>
 
+            {{--Orders routing--}}
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <a href="{{ route('orders.index') }}">
+                    <div class="border border-gray-200 p-6 rounded-lg">
+                        <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Orders</h2>
+                    </div>
+                </a>
+            </div>
+
+            {{--Orderrows routing--}}
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <a href="{{ route('orderrows.index') }}">
+                    <div class="border border-gray-200 p-6 rounded-lg">
+                        <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Orderrows</h2>
+                    </div>
+                </a>
+            </div>
+
+            {{--Reviews routing--}}
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <a href="{{ route('reviews.index') }}">
+                    <div class="border border-gray-200 p-6 rounded-lg">
+                        <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Reviews</h2>
+                    </div>
+                </a>
+            </div>
+    </div>
+    </div>
+</section>
 @endsection

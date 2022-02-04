@@ -14,7 +14,7 @@
                         focus:text-green-500 focus:border-customgreen
                         dark-focus:text-customgreen-light dark-focus:border-customgreen-light
                         transition duration-500 ease-in-out">
-                <a href="{{ route('products.index') }}">Overzicht</a>
+                <a href="{{ route('reviews.index') }}">Overzicht</a>
             </button>
             <a
                 href=""
@@ -32,7 +32,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-80 mr-auto">
-        Verwijderen product
+        Verwijderen user
     </h2>
 
     <div class="w-full max-w-xs mx-auto mt-44">
@@ -49,26 +49,17 @@
             </div>
         @endif
 
-        <form id="form" class="bg-white shadow-md rounded border .border-customgreen px-8 pt-6 pb-8 mb-4"
-              action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST">
+        <form class="bg-white shadow-md rounded border .border-customgreen px-8 pt-6 pb-8 mb-4"
+              action="{{ route('reviews.destroy', ['review' => $review->id]) }}" method="POST">
             @method('DELETE')
             @csrf
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                    ProductNaam
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="review">
+                    Naam
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                       name="name" id="name" value="{{ $product->name }}" type="text" disabled>
+                       id="name" type="text" placeholder="Naam" name="name" value="{{ $review->review }}" disabled>
             </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
-                    Description
-                </label>
-                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          name="description"
-                          id="description" disabled>{{ $product->description }} </textarea>
-            </div>
-
 
             <div class="flex items-center justify-between">
                 <button class="bg-customgreen hover:bg-customgreen-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >

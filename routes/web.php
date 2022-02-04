@@ -21,48 +21,55 @@ use Illuminate\Support\Facades\Route;
 
 //HOME
 Route::get('/', function () {
-    return view('layouts.layout');
+    return view('public.index');
 });
-
-
+Route::get('/products/{category}', [
+    Open\ProductController::class, 'getCategory'])
+    ->name('category.index');
 
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin', function () {
         return view('admin.index');
     });
-});
-
-Route::group(['middleware' => ['role:admin']], function () {
 //Productstate routes
-Route::get('admin/productstates/{productstate}/delete', [Admin\ProductstateController::class, 'delete'])
-    ->name('productstates.delete');
-Route::resource('/admin/productstates', Admin\ProductstateController::class);
+    Route::get('admin/productstates/{productstate}/delete', [Admin\ProductstateController::class, 'delete'])
+        ->name('productstates.delete');
+    Route::resource('/admin/productstates', Admin\ProductstateController::class);
 
-//Pricetype routes
-Route::get('admin/pricetypes/{pricetype}/delete', [Admin\PricetypeController::class, 'delete'])
-    ->name('pricetypes.delete');
-Route::resource('/admin/pricetypes', Admin\PricetypeController::Class);
+    //Pricetype routes
+    Route::get('admin/pricetypes/{pricetype}/delete', [Admin\PricetypeController::class, 'delete'])
+        ->name('pricetypes.delete');
+    Route::resource('/admin/pricetypes', Admin\PricetypeController::Class);
 
-// Product routes
-Route::get('admin/products/{product}/delete', [Admin\ProductController::class, 'delete'])
-    ->name('products.delete');
-Route::resource('/admin/products', Admin\ProductController::Class);
+    // Product routes
+    Route::get('admin/products/{product}/delete', [Admin\ProductController::class, 'delete'])
+        ->name('products.delete');
+    Route::resource('/admin/products', Admin\ProductController::Class);
 
 //User routes
-Route::get('admin/users/{user}/delete', [Admin\UserController::class, 'delete'])
-    ->name('users.delete');
-Route::resource('/admin/users', Admin\UserController::Class);
+    Route::get('admin/users/{user}/delete', [Admin\UserController::class, 'delete'])
+        ->name('users.delete');
+    Route::resource('/admin/users', UserController::Class);
 
-//Orders routes
-Route::get('admin/orders/{order}/delete', [Admin\OrderController::class, 'delete'])
-    ->name('orders.delete');
-Route::resource('/admin/orders', Admin\OrderController::Class);
+    Route::get('admin/users/{user}/delete', [Admin\UserController::class, 'delete'])
+        ->name('users.delete');
+    Route::resource('/admin/users', Admin\UserController::Class);
 
-//Orderrows routes
-Route::get('admin/orderrows/{orderrow}/delete', [Admin\OrderrowController::class, 'delete'])
-    ->name('orderrows.delete');
-Route::resource('/admin/orderrows', Admin\OrderrowController::Class);
+    //Orders routes
+    Route::get('admin/orders/{order}/delete', [Admin\OrderController::class, 'delete'])
+        ->name('orders.delete');
+    Route::resource('/admin/orders', Admin\OrderController::Class);
+
+    //Orderrows routes
+    Route::get('admin/orderrows/{orderrow}/delete', [Admin\OrderrowController::class, 'delete'])
+        ->name('orderrows.delete');
+    Route::resource('/admin/orderrows', Admin\OrderrowController::Class);
+
+    //Reviews routes
+    Route::get('admin/reviews/{review}/delete', [Admin\ReviewController::class, 'delete'])
+        ->name('reviews.delete');
+    Route::resource('/admin/reviews', Admin\ReviewController::Class);
 
 });
 

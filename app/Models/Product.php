@@ -41,4 +41,9 @@ class Product extends Model
         return $this->hasMany(OrderRow::class);
     }
 
+    public function review()
+    {
+        return $this->hasMany(Review::class);
+    }
+
 }
