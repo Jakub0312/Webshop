@@ -94,6 +94,61 @@
             </a>
             </div>
         </div>
+
+
+{{--     Orders--}}
+        <div class="flex items-center px-6 py-1 bg-gray-100">
+        </div>
+        <div class="py-4 px-6 ">
+            <h1 class="text-2xl font-semibold text-gray-800">Your orders</h1>
+
+                @if (empty($orders))
+                    <p class="py-1 text-lg text-gray-700">You haven't placed any orders yet!</p>
+                @else
+
+                <table class="w-full border mt-4">
+                    <thead>
+                    <tr class="bg-gray-50 border-b">
+
+                        <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
+                            <div class="flex items-center justify-center">
+                                Date
+                            </div>
+                        </th>
+                        <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
+                            <div class="flex items-center justify-center">
+                                Status
+                            </div>
+                        </th>
+                        <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
+                            <div class="flex items-center justify-center">
+                                Details
+                            </div>
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach($orders as $order)
+                        <tr class="bg-gray-100 text-center border-b text-sm text-gray-700">
+                            <td class="p-2 border-r">
+                                {{ $order->orderdate }}
+                            </td>
+                            <td class="p-2 border-r">
+                                {{ $order->state->name}}
+                            </td>
+                            <td class="p-2 border-r">
+                                <a href="{{ route('profile.showorder', ['order' => $order->id])  }}"
+                                   class="px-4 py-1 text-sm text-customgreen-dark bg-customgreen-light rounded-full">Details</a>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                    </tbody>
+                </table>
+                @endif
+        </div>
     </div>
 
 @endsection

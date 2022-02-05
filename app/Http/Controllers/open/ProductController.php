@@ -49,7 +49,7 @@ class ProductController extends Controller
         $cart->add($product, $product->id); //product wordt toegevoegd aan de cart
 
         $request->session()->put('cart', $cart); //Via request wordt de Session cart geupdate met de net nieuw aangemaakte cart
-        return redirect()->route('publicproduct.index');
+        return redirect()->back(); //route('publicproduct.index');
     }
 
     public function getCart()
@@ -164,9 +164,7 @@ class ProductController extends Controller
 
         Session::forget('cart');
 
-        return redirect()->route('publicproduct.index')->with('message', 'Order succesfully placed!');
+        return redirect()->route('home')->with('message', 'Your order has been placed!');
 
     }
-
-
 }
