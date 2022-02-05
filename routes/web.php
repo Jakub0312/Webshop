@@ -20,12 +20,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 //HOME
-Route::get('/', function () {
-    return view('public.index');
-});
-Route::get('/products/{category}', [
-    Open\ProductController::class, 'getCategory'])
-    ->name('category.index');
+//Route::get('/', function () {
+//    return view('public.index');
+//});
+
+Route::get('/', [
+    Open\HomeController::class, 'index'])
+    ->name('home');
+
+
 
 
 Route::group(['middleware' => ['role:admin']], function () {
@@ -76,10 +79,14 @@ Route::group(['middleware' => ['role:admin']], function () {
 //PUBLIC PAGE
 
 
-//products
+//all products
 Route::get('/products', [
     Open\ProductController::class, 'index'])
     ->name('publicproduct.index');
+//producten per category
+Route::get('/products/{category}', [
+    Open\ProductController::class, 'getCategory'])
+    ->name('category.index');
 
 
 //Routes for shopping cart
@@ -137,6 +144,14 @@ Route::get('/profile/delete-profile', [
 Route::delete('/profile/{user}/destroy-profile', [
     Open\UserController::class, 'destroyProfile'])
     ->name('profile.destroyProfile');
+//show order via profile
+Route::get('/profile/{order}/showorder', [
+    Open\UserController::class, 'showOrder'])
+    ->name('profile.showorder');
+//cancel order via profile
+Route::get('/profile/{order}/cancelorder', [
+    Open\UserController::class, 'cancelOrder'])
+    ->name('profile.cancelorder');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
