@@ -52,9 +52,19 @@ class ProductController extends Controller
         return redirect()->back(); //route('publicproduct.index');
     }
 
+    public function getRemoveItem(Request $request, $id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null; //checkt of de session "Cart" al bestaat, zo niet wordt die aangemaakt
+        $cart = new Cart($oldCart);
+        $cart->remove($id);
+
+        session()->put('cart', $cart);
+        return redirect()->back();
+    }
+
     public function getCart()
     {
-        if (!Session::has('cart')) { //als de session cart nog niet bestaat wordt die zonder variabelen geroute
+        if (!Session::has('cart') || Session::get('cart')->totalAmount === '0') { //als de session cart nog niet bestaat wordt die zonder variabelen geroute
             return view('public.carts.shopping-cart');
         }
         $oldCart = Session::get('cart');
