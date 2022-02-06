@@ -94,6 +94,10 @@ Route::get('/products/{category}', [
 Route::get('/add-to-cart/{id}', [
     Open\ProductController::class, 'getAddToCart'])
     ->name('product.addToCart');
+//removing product from shopping cart
+Route::get('/remove-from-cart/{id}', [
+    Open\ProductController::class, 'getRemoveItem'])
+    ->name('cart.removeItem');
 //going to shopping cart
 Route::get('/shopping-cart', [
     Open\ProductController::class, 'getCart'])
