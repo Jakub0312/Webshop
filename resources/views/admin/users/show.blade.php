@@ -43,6 +43,14 @@
         <div class="py-4 px-6">
             <h1 class="text-2xl font-semibold text-gray-800">{{ $user->name }}</h1>
             <p class="py-2 text-lg text-gray-700"></p>
+            <h2 class="py-2 text-lg text-gray-700">Email: {{ $user->email }}</h2>
+            <h2 class="py-2 text-lg text-gray-700">Role:
+                @if(!empty($user->getRoleNames()))
+                    @foreach($user->getRoleNames() as $v)
+                        <label class="badge badge-success">{{ $v }}</label>
+                    @endforeach
+                @endif
+            </h2>
         </div>
     </div>
 
