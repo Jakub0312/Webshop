@@ -16,14 +16,6 @@
                         transition duration-500 ease-in-out">
                 <a href="{{ route('users.index') }}">Overzicht</a>
             </button>
-            <button
-                class="ml-6 py-2 block border-b-2 border-transparent
-                        focus:outline-none font-medium capitalize text-center
-                        focus:text-green-500 focus:border-customgreen
-                        dark-focus:text-customgreen-light dark-focus:border-customgreen-light
-                        transition duration-500 ease-in-out">
-                <a href="{{ route('users.create') }}">Toevoegen</a>
-            </button>
         </div>
     </nav>
 @endsection
@@ -60,6 +52,15 @@
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
                        @error('name') border-red-500 @enderror"
                        id="name" type="text" placeholder="Naam" name="name" value="{{ old('name', $user->name) }}">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Email
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+                       @error('email') border-red-500 @enderror"
+                       id="email" type="text" placeholder="Email" name="email" value="{{ old('email', $user->email) }}">
             </div>
 
             <div class="flex items-center justify-between">

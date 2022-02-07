@@ -67,6 +67,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         return view('admin.users.edit', compact('user'));
+
     }
 
     /**
@@ -79,6 +80,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->save();
 
         return redirect()->route('users.index')->with('message', 'User succesvol geupdate');
