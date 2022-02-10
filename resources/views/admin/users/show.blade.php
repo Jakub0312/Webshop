@@ -15,14 +15,6 @@
                         transition duration-500 ease-in-out">
                 <a href="{{ route('users.index') }}">Overzicht</a>
             </button>
-            <button
-                class="ml-6 py-2 block border-b-2 border-transparent
-                        focus:outline-none font-medium capitalize text-center
-                        focus:text-green-500 focus:border-customgreen
-                        dark-focus:text-customgreen-light dark-focus:border-customgreen-light
-                        transition duration-500 ease-in-out">
-                <a href="{{ route('users.create') }}">Toevoegen</a>
-            </button>
         </div>
     </nav>
 @endsection
@@ -43,6 +35,14 @@
         <div class="py-4 px-6">
             <h1 class="text-2xl font-semibold text-gray-800">{{ $user->name }}</h1>
             <p class="py-2 text-lg text-gray-700"></p>
+            <h2 class="py-2 text-lg text-gray-700">Email: {{ $user->email }}</h2>
+            <h2 class="py-2 text-lg text-gray-700">Role:
+                @if(!empty($user->getRoleNames()))
+                    @foreach($user->getRoleNames() as $v)
+                        <label class="badge badge-success">{{ $v }}</label>
+                    @endforeach
+                @endif
+            </h2>
         </div>
     </div>
 
