@@ -20,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //HOME
-Route::get('/', function () {
-    return view('public.index');
-});
+Route::get('/', [
+    Admin\HomeController::class, 'index'])
+    ->name('home.index');
+
 Route::get('/products/{category}', [
     Open\ProductController::class, 'getCategory'])
     ->name('category.index');
