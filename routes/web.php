@@ -77,9 +77,13 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 
 //products
-Route::get('/products', [
-    Open\ProductController::class, 'index'])
-    ->name('publicproduct.index');
+Route::get('/products', [Open\ProductController::class, 'index'])->name('public.product.index');
+
+Route::get('/detail/{id}', [
+    Open\ProductController::class, 'Detail'])
+    ->name('product.detail');
+
+
 
 
 //Routes for shopping cart

@@ -35,14 +35,35 @@
     </h2>
 
     <!-- component -->
-    <div class="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4 ml-40">
-        <img class="w-full h-56 object-cover object-center" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="avatar">
+    <div class="max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-4 ml-auto mr-auto">
         <div class="flex items-center px-6 py-3 bg-gray-900">
-            <h1 class="mx-3 text-white font-semibold text-lg">Products</h1>
+            <h1 class="mx-3 text-white font-semibold text-xl">{{ $product->name }}</h1>
         </div>
         <div class="py-4 px-6">
-            <h1 class="text-2xl font-semibold text-gray-800">{{ $product->name }}</h1>
-            <p class="py-2 text-lg text-gray-700"></p>
+            <h1 class="text-2xl font-semibold text-gray-800">Product Information</h1>
+            <p class="py-1 text-lg text-gray-700 mt-1 font-semibold inline-block">Name: </p>
+            <p class="py-1 text-lg text-gray-700 inline-block">{{ $product->name }}</p><br>
+            <br>
+            <p class="py-1 text-lg text-gray-700 font-semibold inline-block">Category:</p>
+            <p class="py-1 text-lg text-gray-700 inline-block"> {{ $product->category->name }}</p><br>
+            <br>
+            <p class="py-1 text-lg text-gray-700 font-semibold inline-block">Stock:</p>
+            <p class="py-1 text-lg text-gray-700 inline-block"> {{ $product->stock }}</p><br>
+
+
+        </div>
+        <div class="flex items-center px-6 py-1 bg-gray-100">
+        </div>
+        <div class="py-4 px-6">
+            <p class="py-1 text-lg text-gray-700 font-semibold inline-block">Description:</p>
+            <p class="py-1 text-lg text-gray-700 inline-block"> {{ $product->description }}</p><br>
+            <br>
+        </div>
+        <div class="flex items-center px-6 py-1 bg-gray-100">
+        </div>
+        <div class="py-4 px-6">
+            <p class="py-1 text-lg text-gray-700 font-semibold inline-block">Specifications:</p>
+            <p class="py-1 text-lg text-gray-700 inline-block"> {{ $product->specifications}}</p><br>
         </div>
     </div>
 

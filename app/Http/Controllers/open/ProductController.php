@@ -28,8 +28,14 @@ class ProductController extends Controller
     public function index()
     {
         //$products = Product::all();
-        $products = Product::with('latest_price')->get();
+        $products = Product::with('latest_price', 'category')->paginate(12);
         return view('public.products.index', compact('products'));
+    }
+
+    public function detail($id)
+    {
+        $product = Product::where('id', $id)->first();
+        return view('public.products.detail', compact('product'));
     }
 
     public function getCategory(Category $category)
@@ -47,7 +53,7 @@ class ProductController extends Controller
         $cart->add($product, $product->id); //product wordt toegevoegd aan de cart
 
         $request->session()->put('cart', $cart); //Via request wordt de Session cart geupdate met de net nieuw aangemaakte cart
-        return redirect()->route('publicproduct.index');
+        return redirect()->route('public.product.index');
     }
 
     public function getCart()
