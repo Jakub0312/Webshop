@@ -22,7 +22,7 @@
                         dark:text-customgreen-light dark:border-customgreen-light
                         focus:outline-none border-b-2 font-medium capitalize
                         transition duration-500 ease-in-out">
-                Toevoegen
+                Delete
             </a>
         </div>
     </nav>
