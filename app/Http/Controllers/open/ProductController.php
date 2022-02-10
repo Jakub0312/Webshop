@@ -146,6 +146,7 @@ class ProductController extends Controller
                     'password' => 'required|min:8|string'
                 ]);
                 $user->password = Hash::make($request->password);
+                $user->assignRole('customer');
             }
             $user->save();
 
@@ -180,7 +181,7 @@ class ProductController extends Controller
 
         Session::forget('cart');
 
-        return redirect()->route('home')->with('message', 'Your order has been placed!');
+        return redirect()->route('home.index')->with('message', 'Your order has been placed!');
 
     }
 }

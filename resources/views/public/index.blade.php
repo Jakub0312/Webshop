@@ -31,7 +31,7 @@
     <div class="flex flex-wrap ml-64 mr-auto">
         @foreach($products as $product)
             <div class="w-full md:w-1/3 xl:w-1/5 p-6 flex flex-col float-right m-1 border-2 rounded-lg overflow-hidden">
-                <a href="#">
+                <a href="{{ route('product.detail', ['id' => $product->id]) }}">
                     <img class="hover:grow hover:shadow-lg"
                          src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png">
                     <div class="pt-3 flex items-center justify-between">
