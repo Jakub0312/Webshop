@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //HOME
+<<<<<<< HEAD
 //Route::get('/', function () {
 //    return view('public.index');
 //});
@@ -29,6 +30,15 @@ Route::get('/', [
     ->name('home');
 
 
+=======
+Route::get('/', [
+    Admin\HomeController::class, 'index'])
+    ->name('home.index');
+
+Route::get('/products/{category}', [
+    Open\ProductController::class, 'getCategory'])
+    ->name('category.index');
+>>>>>>> Jakub
 
 
 Route::group(['middleware' => ['role:admin']], function () {
