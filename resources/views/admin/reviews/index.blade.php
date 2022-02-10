@@ -54,7 +54,7 @@
 
                 <th class="p-2 border-r cursor-pointer text-sm font-semibold text-gray-700">
                     <div class="flex items-center justify-center">
-                        Product id
+                        Product
                     </div>
                 </th>
 
@@ -92,7 +92,7 @@
                         {{ $review->id }}
                     </td>
                     <td class="p-2 border-r">
-                        {{ $review->product_id }}
+                        {{ $review->product->name }}
                     </td>
 
                     <td class="p-2 border-r">
