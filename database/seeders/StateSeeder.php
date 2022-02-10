@@ -14,9 +14,24 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-        State::factory()
-            ->times(10)
-            ->create();
-
+        State::factory()->create([
+            'name' => 'Placed'
+        ]);
+        State::factory()->create([
+            'name' => 'Being processed'
+        ]);
+        State::factory()->create([
+            'name' => 'Ready for shipping'
+        ]);
+        State::factory()->create([
+            'name' => 'Shipped'
+        ]);
+        State::factory()->create([
+            'name' => 'Delivered!'
+        ]);
+        State::factory()->create([
+            'name' => 'Cancelled!'
+        ]);
     }
 }
+

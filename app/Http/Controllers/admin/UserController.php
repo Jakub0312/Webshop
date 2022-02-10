@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -18,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-
+        //$users = User::with("roles");
         return view('admin.users.index', compact('users'));
     }
 
@@ -66,7 +67,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
+
     }
 
     /**
@@ -79,6 +83,8 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->name = $request->name;
+        $user->email = $request->email;
+        $user->syncRoles($request->role_id);
         $user->save();
 
         return redirect()->route('users.index')->with('message', 'User succesvol geupdate');

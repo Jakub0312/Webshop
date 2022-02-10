@@ -24,11 +24,7 @@ class StoreAddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'streetname' => 'string|min:5|max:100',
-            'zipcode' => 'string|min:5|max:15',
-            'city' => 'string|min:5|max:100',
-            'country' => 'string|min:5|max:45',
-            'addresstype' => 'integer',
+
         ];
     }
 }

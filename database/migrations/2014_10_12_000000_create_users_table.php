@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name', 75);
             $table->string('email', 100)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password'); //->nullable(); Gebruiken als een gebruiker zonder account een bestelling wil plaatsen?
+            $table->string('password')->nullable(); //Gebruiken als een gebruiker zonder account een bestelling wil plaatsen?
             $table->rememberToken();
             $table->timestamps();
         });

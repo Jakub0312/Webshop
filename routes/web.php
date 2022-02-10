@@ -20,12 +20,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 //HOME
-Route::get('/', function () {
-    return view('public.index');
-});
+<<<<<<< HEAD
+//Route::get('/', function () {
+//    return view('public.index');
+//});
+
+Route::get('/', [
+    Open\HomeController::class, 'index'])
+    ->name('home');
+
+
+=======
+Route::get('/', [
+    Admin\HomeController::class, 'index'])
+    ->name('home.index');
+
 Route::get('/products/{category}', [
     Open\ProductController::class, 'getCategory'])
     ->name('category.index');
+>>>>>>> Jakub
 
 
 Route::group(['middleware' => ['role:admin']], function () {
@@ -76,8 +89,14 @@ Route::group(['middleware' => ['role:admin']], function () {
 //PUBLIC PAGE
 
 
-//products
-Route::get('/products', [Open\ProductController::class, 'index'])->name('public.product.index');
+//all products
+Route::get('/products', [
+    Open\ProductController::class, 'index'])
+    ->name('publicproduct.index');
+//producten per category
+Route::get('/products/{category}', [
+    Open\ProductController::class, 'getCategory'])
+    ->name('category.index');
 
 Route::get('/detail/{id}', [
     Open\ProductController::class, 'Detail'])
@@ -91,6 +110,10 @@ Route::get('/detail/{id}', [
 Route::get('/add-to-cart/{id}', [
     Open\ProductController::class, 'getAddToCart'])
     ->name('product.addToCart');
+//removing product from shopping cart
+Route::get('/remove-from-cart/{id}', [
+    Open\ProductController::class, 'getRemoveItem'])
+    ->name('cart.removeItem');
 //going to shopping cart
 Route::get('/shopping-cart', [
     Open\ProductController::class, 'getCart'])
@@ -141,6 +164,14 @@ Route::get('/profile/delete-profile', [
 Route::delete('/profile/{user}/destroy-profile', [
     Open\UserController::class, 'destroyProfile'])
     ->name('profile.destroyProfile');
+//show order via profile
+Route::get('/profile/{order}/showorder', [
+    Open\UserController::class, 'showOrder'])
+    ->name('profile.showorder');
+//cancel order via profile
+Route::get('/profile/{order}/cancelorder', [
+    Open\UserController::class, 'cancelOrder'])
+    ->name('profile.cancelorder');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

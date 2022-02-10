@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateAddressRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Address;
 use App\Models\Addresstype;
+use App\Models\Order;
+use App\Models\Orderrow;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -25,10 +27,11 @@ class UserController extends Controller
         $user = User::find(Auth::user()->id);//
         //$address = Address::where('user_id', Auth::user()->id)->get(); //Deze gebruiken om alle adressen te laten zien. Check profile.blade voor de andere code
         $address = Address::where('user_id', Auth::user()->id)->first();
+        $orders = Order::where('user_id', $user->id)->get();
         if (empty($address)) {
-            return view('public.profiles.profile', compact('user'));
+            return view('public.profiles.profile', compact('user', 'orders'));
         } else {
-            return view('public.profiles.profile', compact('user', 'address'));
+            return view('public.profiles.profile', compact('user', 'address', 'orders'));
 
         }
     }
@@ -62,18 +65,7 @@ class UserController extends Controller
         $address->addresstype_id = $request->input('addresstype');
         $address->save();
 
-        return redirect()->route('profile')->with('message', 'Address succesfully added');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-
+        return redirect()->route('profile')->with('message', 'You have succesfully added an address to your account!');
     }
 
     /**
@@ -106,7 +98,7 @@ class UserController extends Controller
         $address->addresstype_id = $request->input('addresstype');
         $address->save();
 
-        return redirect()->route('profile')->with('message', 'Address succesfully updated');
+        return redirect()->route('profile')->with('message', 'Your address has successfully been updated!');
     }
 
     public function editProfile()
@@ -135,13 +127,25 @@ class UserController extends Controller
 
     public function destroyProfile(User $user)
     {
-
-
         $address = Address::where('user_id', Auth::user()->id)->first();
         if (!empty($address)) {
             $address->delete();
         }
         $user->delete();
-        return redirect()->route('publicproduct.index')->with('message', 'Profile succesvol verwijderd!'); //voor nu naar products index geroute omdat we geen home pagina hebben
+        return redirect()->route('home')->with('message', 'Your profile has been deleted!'); //voor nu naar products index geroute omdat we geen home pagina hebben
+    }
+
+    public function showOrder(Order $order){
+
+        $orderrows = Orderrow::where('order_id', $order->id)->get();
+        $address = Address::where('user_id', $order->user_id)->first();
+        return view ('public.profiles.showorder', compact('order', 'orderrows', 'address'));
+    }
+
+    public function cancelOrder(Order $order)
+    {
+        $order->state_id = '6';
+        $order->save();
+        return redirect()->back()->with('message', 'Your order has been cancelled');
     }
 }
