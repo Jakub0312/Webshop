@@ -15,6 +15,14 @@
                         transition duration-500 ease-in-out">
                 Overzicht
             </a>
+            <button
+                class="ml-6 py-2 block border-b-2 border-transparent
+                        focus:outline-none font-medium capitalize text-center
+                        focus:text-green-500 focus:border-customgreen
+                        dark-focus:text-customgreen-light dark-focus:border-customgreen-light
+                        transition duration-500 ease-in-out">
+                <a href="{{ route('users.create') }}">Toevoegen</a>
+            </button>
         </div>
     </nav>
 @endsection
