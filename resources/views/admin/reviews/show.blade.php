@@ -36,6 +36,7 @@
             <h1 class="text-2xl font-semibold text-gray-800">Review id: {{ $review->id }}</h1>
             <h2 class="py-2 text-lg text-gray-700">Product id: {{ $review->product_id }}</h2>
             <h2 class="py-2 text-lg text-gray-700">User id: {{ $review->user_id }}</h2>
+            <h2 class="py-2 text-lg text-gray-700">Title: {{ $review->title }}</h2>
             <p class="py-2 text-lg text-gray-700">Review : {{ $review->review }}</p>
         </div>
     </div>
