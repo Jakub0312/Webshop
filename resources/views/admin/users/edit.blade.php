@@ -63,6 +63,19 @@
                        id="email" type="text" placeholder="Email" name="email" value="{{ old('email', $user->email) }}">
             </div>
 
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="category_id">
+                    Role
+                </label>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+                    focus:outline-none focus:shadow-outline" name="role_id" id="role_id">
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}"  {{ $user->roles->contains($role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="flex items-center justify-between">
                 <button class="bg-customgreen hover:bg-customgreen-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >
                     Edit
