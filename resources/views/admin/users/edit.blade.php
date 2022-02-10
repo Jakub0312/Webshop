@@ -24,7 +24,7 @@
 @section('main')
 
     <h2 class="my-4 text-3xl font-semibold dark:text-gray-400 ml-80 mr-auto">
-        Edit pricetype
+        Edit users
     </h2>
 
     <div class="w-full max-w-xs mx-auto mt-44">

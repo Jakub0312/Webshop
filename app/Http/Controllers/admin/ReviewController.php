@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -27,7 +30,9 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+
+        return view('admin.reviews.create', compact('products'));
     }
 
     /**
@@ -38,7 +43,14 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $review = new Review();
+        $review->product_id = $request->product_id;
+        $review->user_id = Auth::user()->id;
+        $review->title = $request->title;
+        $review->review = $request->review;
+        $review->save();
+
+        return redirect()->route('reviews.index')->with('message', 'Review succesfully added');
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -30,7 +31,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -43,6 +45,10 @@ class UserController extends Controller
     {
         $users = new User();
         $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password = $request->user()->fill([
+            'password' => Hash::make($request->Password)
+        ]);
         $users->save();
 
         return redirect()->route('users.index')->with('message', 'User succesvol aangemaakt!');
