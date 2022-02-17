@@ -147,6 +147,10 @@ class ProductController extends Controller
                 ]);
                 $user->password = Hash::make($request->password);
                 $user->assignRole('customer');
+                Auth::login($user);
+            }
+            else {
+                $user->assignRole('No account');
             }
             $user->save();
 

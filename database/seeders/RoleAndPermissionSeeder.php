@@ -24,6 +24,8 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'edit pricetype']);
         Permission::create(['name' => 'delete pricetype']);
 
+        $noaccount = Role::create(['name' => 'no account']);
+
         $customer = Role::create(['name' => 'customer']);
 
         $buyer = Role::create(['name' => 'buyer'])
