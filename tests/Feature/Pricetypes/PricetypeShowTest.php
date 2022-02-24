@@ -16,6 +16,29 @@ test('admin can view pricetype show', function ()
     $admin = User::find(4);
     Laravel\be($admin)
         ->get(route('pricetypes.show', ['pricetype' => $this->pricetype->id]))
+        ->assertViewIs('admin.pricetypes.show')
+        ->assertSee($this->pricetype->id)
+        ->assertSee($this->pricetype->name)
+        ->assertStatus(200);
+})->group('pricetypeShow');
+
+test('sales can view pricetype show', function ()
+{
+    $sales = User::find(3);
+    Laravel\be($sales)
+        ->get(route('pricetypes.show', ['pricetype' => $this->pricetype->id]))
+        ->assertViewIs('admin.pricetypes.show')
+        ->assertSee($this->pricetype->id)
+        ->assertSee($this->pricetype->name)
+        ->assertStatus(200);
+})->group('pricetypeShow');
+
+test('buyer can view pricetype show', function ()
+{
+    $buyer = User::find(2);
+    Laravel\be($buyer)
+        ->get(route('pricetypes.show', ['pricetype' => $this->pricetype->id]))
+        ->assertViewIs('admin.pricetypes.show')
         ->assertSee($this->pricetype->id)
         ->assertSee($this->pricetype->name)
         ->assertStatus(200);
@@ -33,5 +56,5 @@ test('customer can not view pricetype show', function ()
 test('guest can not view pricetype show', function ()
 {
     $this->get(route('pricetypes.show', ['pricetype' => $this->pricetype->id]))
-        ->assertStatus(403);
+        ->assertRedirect('login');
 })->group('pricetypeShow');

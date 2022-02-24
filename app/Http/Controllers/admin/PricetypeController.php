@@ -10,6 +10,18 @@ use Illuminate\Http\Request;
 
 class PricetypeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:index pricetype', ['only' => ['index']]);
+        $this->middleware('permission:show pricetype', ['only' => ['show']]);
+        $this->middleware('permission:create pricetype', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit pricetype', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete pricetype', ['only' => ['delete', 'destroy']]);
+
+    }
+
     /**
      * Display a listing of the resource.
      *

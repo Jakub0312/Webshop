@@ -14,7 +14,7 @@ beforeEach(function ()
 test('guest can not create a pricetype in the admin', function ()
 {
   $this->postJson(route('pricetypes.store'))
-    ->assertStatus(403); //403 inplaats van 401 want redirect ofzo
+    ->assertStatus(401);
 })->group('pricetypeStore');
 
 test('customer can not create a pricetype in the admin', function ()
@@ -32,6 +32,34 @@ test('admin can create a pricetype in the admin', function () {
     $pricetype = Pricetype::factory()->make();
 
     Laravel\be($admin)
+        ->postJson(route('pricetypes.store'), $pricetype->toArray())
+        ->assertRedirect(route('pricetypes.index'));
+
+    $this->assertDatabaseHas('pricetypes',[
+        'name' => $pricetype->name
+    ]);
+})->group('pricetypeStore');
+
+test('Sales can create a pricetype in the admin', function () {
+    $this->withoutExceptionHandling();
+    $sales = User::find(3);
+    $pricetype = Pricetype::factory()->make();
+
+    Laravel\be($sales)
+        ->postJson(route('pricetypes.store'), $pricetype->toArray())
+        ->assertRedirect(route('pricetypes.index'));
+
+    $this->assertDatabaseHas('pricetypes',[
+        'name' => $pricetype->name
+    ]);
+})->group('pricetypeStore');
+
+test('Buyer(inkoop) can create a pricetype in the admin', function () {
+    $this->withoutExceptionHandling();
+    $buyer = User::find(2);
+    $pricetype = Pricetype::factory()->make();
+
+    Laravel\be($buyer)
         ->postJson(route('pricetypes.store'), $pricetype->toArray())
         ->assertRedirect(route('pricetypes.index'));
 
