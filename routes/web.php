@@ -38,7 +38,7 @@ Route::get('/products/{category}', [
     ->name('category.index');
 
 
-Route::group(['middleware' => ['role:admin']], function () {
+Route::group(['middleware' => ['role:admin|sales|buyer']], function () {
     Route::get('/admin', function () {
         return view('admin.index');
     });
