@@ -15,3 +15,7 @@ yarn-error.log
 /.vscode
 /storage/debugbar
 
+tests/Feature/Example2Test.php
+tests/Unit/Example2Test.php
+tests/Feature/Products/ProductIndexTest.php
+tests/Pest.php
