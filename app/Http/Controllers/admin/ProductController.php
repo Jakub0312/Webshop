@@ -111,7 +111,7 @@ class ProductController extends Controller
             $price->save();
         }
 
-        return redirect()->route('products.index')->with('status', 'Product succesvol geupdate');
+        return redirect()->route('products.index')->with('message', 'Product succesvol geupdate');
     }
 
     /**
