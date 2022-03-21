@@ -114,8 +114,8 @@
 
 
 
-                <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                    <button @click="open = !open"
+                <div  id="Profile" @click.away="open = false" class="relative" x-data="{ open: false }">
+                    <button id="Profile" @click="open = !open"
                             class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-customgreen-light focus:bg-customgreen focus:outline-none focus:shadow-outline">
                         <span>Profile</span>
                         <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}"
